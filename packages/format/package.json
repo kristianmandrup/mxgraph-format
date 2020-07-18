@@ -1,0 +1,32 @@
+{
+  "name": "@mxgraph-app/format",
+  "version": "0.0.1",
+  "description": "mxgraph app format",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": "",
+  "author": "Kristian Mandrup <kmandrup@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "Base64": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@mxgraph-app/mx": "0.0.1",
+    "@mxgraph-app/resources": "0.0.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@mxgraph-app/mx": "*",
+    "@mxgraph-app/resources": "*"
+  },
+  "scripts": {
+    "start": "tsc -w --preserveWatchOutput"
+  }
+}
