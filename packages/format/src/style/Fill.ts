@@ -7,7 +7,7 @@ export class Fill extends BaseStyleFormat {
    * Adds the label menu items to the given menu and parent.
    */
   addFill() {
-    const { ui, graph, ss, container } = this;
+    const { graph, ss, container } = this;
     container.style.paddingTop = "6px";
     container.style.paddingBottom = "6px";
 
@@ -33,26 +33,29 @@ export class Fill extends BaseStyleFormat {
         } else {
           gradientSelect.style.display = "";
         }
-      },
+      }
     );
 
-    var fillKey = ss.style.shape == "image"
-      ? mxConstants.STYLE_IMAGE_BACKGROUND
-      : mxConstants.STYLE_FILLCOLOR;
-    var label = ss.style.shape == "image"
-      ? mxResources.get("background")
-      : mxResources.get("fill");
+    var fillKey =
+      ss.style.shape == "image"
+        ? mxConstants.STYLE_IMAGE_BACKGROUND
+        : mxConstants.STYLE_FILLCOLOR;
+    var label =
+      ss.style.shape == "image"
+        ? mxResources.get("background")
+        : mxResources.get("fill");
 
     var fillPanel: any = this.createCellColorOption(label, fillKey, "#ffffff");
     fillPanel.style.fontWeight = "bold";
 
     var tmpColor = mxUtils.getValue(ss.style, fillKey, null);
-    gradientPanel.style.display = tmpColor != null &&
+    gradientPanel.style.display =
+      tmpColor != null &&
       tmpColor != mxConstants.NONE &&
       ss.fill &&
       ss.style.shape != "image"
-      ? ""
-      : "none";
+        ? ""
+        : "none";
 
     var directions = [
       mxConstants.DIRECTION_NORTH,
@@ -75,7 +78,7 @@ export class Fill extends BaseStyleFormat {
       var value = mxUtils.getValue(
         ss.style,
         mxConstants.STYLE_GRADIENT_DIRECTION,
-        mxConstants.DIRECTION_SOUTH,
+        mxConstants.DIRECTION_SOUTH
       );
 
       // Handles empty string which is not allowed as a value
@@ -89,7 +92,7 @@ export class Fill extends BaseStyleFormat {
       var fillColor = mxUtils.getValue(
         ss.style,
         mxConstants.STYLE_FILLCOLOR,
-        null,
+        null
       );
 
       if (
@@ -117,7 +120,7 @@ export class Fill extends BaseStyleFormat {
       graph.setCellStyles(
         mxConstants.STYLE_GRADIENT_DIRECTION,
         gradientSelect.value,
-        graph.getSelectionCells(),
+        graph.getSelectionCells()
       );
       mxEvent.consume(evt);
     });
@@ -133,8 +136,8 @@ export class Fill extends BaseStyleFormat {
         this.createCellColorOption(
           custom[i].title,
           custom[i].key,
-          custom[i].defaultValue,
-        ),
+          custom[i].defaultValue
+        )
       );
     }
 

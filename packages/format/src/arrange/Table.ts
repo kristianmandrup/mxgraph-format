@@ -34,7 +34,7 @@ export class Table {
   }
 
   /**
-   *
+   * TODO: refactor - partition
    */
   add(div) {
     const { ui, graph, ss } = this;
@@ -65,7 +65,7 @@ export class Table {
             ui.handleError(e);
           }
         },
-        panel,
+        panel
       ),
       ui.toolbar.addButton(
         "geSprite-insertcolumnafter",
@@ -77,7 +77,7 @@ export class Table {
             ui.handleError(e);
           }
         },
-        panel,
+        panel
       ),
       ui.toolbar.addButton(
         "geSprite-deletecolumn",
@@ -89,7 +89,7 @@ export class Table {
             ui.handleError(e);
           }
         },
-        panel,
+        panel
       ),
       ui.toolbar.addButton(
         "geSprite-insertrowbefore",
@@ -101,7 +101,7 @@ export class Table {
             ui.handleError(e);
           }
         },
-        panel,
+        panel
       ),
       ui.toolbar.addButton(
         "geSprite-insertrowafter",
@@ -113,7 +113,7 @@ export class Table {
             ui.handleError(e);
           }
         },
-        panel,
+        panel
       ),
       ui.toolbar.addButton(
         "geSprite-deleterow",
@@ -125,7 +125,7 @@ export class Table {
             ui.handleError(e);
           }
         },
-        panel,
+        panel
       ),
     ];
     this.styleButtons(btns);
