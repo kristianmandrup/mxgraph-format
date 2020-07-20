@@ -1,10 +1,10 @@
 import { Table } from "../../";
-import { editorUi as ui, format } from "../mocks";
+import { editorUi as ui, format, container } from "../mocks";
 
 describe("Table", () => {
   let instance;
   beforeEach(() => {
-    instance = new Table(ui);
+    instance = new Table(ui, format);
   });
 
   describe("instance", () => {
@@ -19,7 +19,7 @@ describe("Table", () => {
     describe("methods", () => {
       describe("add(div)", () => {
         it("adds to div - no throw", () => {
-          expect(() => instance.add(div)).not.toThrow();
+          expect(() => instance.add(container)).not.toThrow();
         });
       });
     });

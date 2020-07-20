@@ -1,9 +1,9 @@
 import mx from "@mxgraph-app/mx";
-import { Dialog } from "@mxgraph-app/dialogs";
+// import { Dialog } from "@mxgraph-app/dialogs";
 import { DiagramFormatPanel } from "../diagram/DiagramFormatPanel";
 import { TextFormatPanel } from "../text/TextFormatPanel";
 import { StyleFormatPanel } from "../style/StyleFormatPanel";
-import { ArrangePanel } from "../arrange/ArrangePanel";
+import { ArrangePanel } from "../arrange/panel/ArrangePanel";
 const { mxResources, mxClient, mxEvent, mxUtils } = mx;
 
 export class FormatRefresher {
@@ -50,7 +50,7 @@ export class FormatRefresher {
       mxClient.IS_POINTER ? "pointerdown" : "mousedown",
       (evt) => {
         evt.preventDefault();
-      },
+      }
     );
 
     if (graph.isSelectionEmpty()) {
@@ -175,10 +175,12 @@ export class FormatRefresher {
     return label;
   }
 
+  closeImage: any; // Dialog.prototype.closeImage
+
   createImage() {
     var img = document.createElement("img");
     img.setAttribute("border", "0");
-    img.setAttribute("src", Dialog.prototype.closeImage);
+    img.setAttribute("src", this.closeImage);
     img.setAttribute("title", mxResources.get("hide"));
     img.style.position = "absolute";
     img.style.display = "block";
@@ -240,7 +242,7 @@ export class FormatRefresher {
       mxClient.IS_POINTER ? "pointerdown" : "mousedown",
       (evt) => {
         evt.preventDefault();
-      },
+      }
     );
 
     if (index == (containsLabel ? this.labelIndex : this.currentIndex)) {
