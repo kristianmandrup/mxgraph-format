@@ -1,10 +1,10 @@
-import { EdgeListener } from "../../../..";
+import { BasicManager } from "../../../..";
 import { editorUi as ui, format, container } from "../../../mocks";
 
-describe("EdgeListener", () => {
+describe("BasicManager", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new EdgeListener(ui, format, container);
+    instance = new BasicManager(ui, format, container);
     div = document.createElement("div");
   });
 
