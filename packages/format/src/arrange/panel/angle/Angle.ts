@@ -3,108 +3,167 @@ import { BaseArrangeFormat } from "../../BaseArrangeFormat";
 const { mxUtils, mxEvent, mxConstants, mxResources } = mx;
 
 export class Angle extends BaseArrangeFormat {
-  /**
-   *
-   */
-  add(div) {
-    var ui = this.editorUi;
-    var editor = ui.editor;
-    var graph = editor.graph;
-    var ss = this.format.getSelectionState();
+  div: any;
+  span: any;
+  input: any;
+  update: any;
+  label: any;
+  btn: any;
+  listener: any;
 
-    div.style.paddingBottom = "8px";
-
+  createSpan() {
     var span = document.createElement("div");
     span.style.position = "absolute";
     span.style.width = "70px";
     span.style.marginTop = "0px";
     span.style.fontWeight = "bold";
+    this.span = span;
+    return span;
+  }
 
-    var input: any;
-    var update: any;
-    var btn: any;
+  setDiv() {
+    const { div, ss } = this;
 
+    div.style.paddingBottom = "8px";
     if (ss.edges.length == 0) {
-      mxUtils.write(span, mxResources.get("angle"));
-      div.appendChild(span);
-
-      input = this.addUnitInput(
-        div,
-        "°",
-        20,
-        44,
-        () => {
-          update.apply(this, arguments);
-        },
-        null,
-        null,
-        null,
-        null
-      );
-
-      mxUtils.br(div);
-      div.style.paddingTop = "10px";
     } else {
       div.style.paddingTop = "8px";
     }
+  }
 
-    if (!ss.containsLabel) {
-      var label = mxResources.get("reverse");
+  get hasEdges() {
+    const { ss } = this;
+    return ss.edges.length >= 0;
+  }
 
-      if (ss.vertices.length > 0 && ss.edges.length > 0) {
-        label = mxResources.get("turn") + " / " + label;
-      } else if (ss.vertices.length > 0) {
-        label = mxResources.get("turn");
-      }
+  createInput() {
+    const { div, addUnitInput, update } = this;
+    this.input = addUnitInput(
+      div,
+      "°",
+      20,
+      44,
+      () => {
+        update.apply(this, arguments);
+      },
+      null,
+      null,
+      null,
+      null
+    );
+  }
 
-      btn = mxUtils.button(label, (evt) => {
-        ui.actions.get("turn").funct(evt);
-      });
+  withoutEdges() {
+    const { createInput, hasEdges, div, span } = this;
+    if (hasEdges) return;
+    createInput();
+    mxUtils.write(span, mxResources.get("angle"));
+    div.appendChild(span);
+    mxUtils.br(div);
+    div.style.paddingTop = "10px";
+  }
 
-      btn.setAttribute(
-        "title",
-        label + " (" + this.editorUi.actions.get("turn").shortcut + ")"
-      );
-      btn.style.width = "202px";
-      div.appendChild(btn);
+  withEdges() {
+    const { hasEdges } = this;
+    if (!hasEdges) return;
+    this.div.style.paddingTop = "8px";
+  }
 
-      if (input) {
-        btn.style.marginTop = "8px";
-      }
-    }
+  createBtn() {
+    const { label, ui, div, input } = this;
+    const btn = mxUtils.button(label, (evt) => {
+      ui.actions.get("turn").funct(evt);
+    });
+
+    btn.setAttribute(
+      "title",
+      label + " (" + this.editorUi.actions.get("turn").shortcut + ")"
+    );
+    btn.style.width = "202px";
+    div.appendChild(btn);
 
     if (input) {
-      var listener = (_sender?, _evt?, force?) => {
-        if (force || document.activeElement != input) {
-          ss = this.format.getSelectionState();
-          var tmp = parseFloat(
-            mxUtils.getValue(ss.style, mxConstants.STYLE_ROTATION, 0)
-          );
-          input.value = isNaN(tmp) ? "" : tmp + "°";
-        }
-      };
-
-      update = this.installInputHandler(
-        input,
-        mxConstants.STYLE_ROTATION,
-        0,
-        0,
-        360,
-        "°",
-        null,
-        true
-      );
-      this.addKeyHandler(input, listener);
-
-      graph.getModel().addListener(mxEvent.CHANGE, listener);
-      this.listeners.push({
-        destroy: function () {
-          graph.getModel().removeListener(listener);
-        },
-      });
-      listener();
+      btn.style.marginTop = "8px";
     }
+    this.btn = btn;
+    return btn;
+  }
 
+  configureLabelsAndButtons() {
+    const { ss } = this;
+    if (ss.containsLabel) return;
+    let label = mxResources.get("reverse");
+
+    if (ss.vertices.length > 0 && ss.edges.length > 0) {
+      label = mxResources.get("turn") + " / " + label;
+    } else if (ss.vertices.length > 0) {
+      label = mxResources.get("turn");
+    }
+    this.label = label;
+    this.createBtn();
+  }
+
+  createListener() {
+    const { input, ss } = this;
+    this.listener = (_sender?, _evt?, force?) => {
+      if (force || document.activeElement != input) {
+        var tmp = parseFloat(
+          mxUtils.getValue(ss.style, mxConstants.STYLE_ROTATION, 0)
+        );
+        input.value = isNaN(tmp) ? "" : tmp + "°";
+      }
+    };
+  }
+
+  createUpdate() {
+    const { input } = this;
+    this.update = this.installInputHandler(
+      input,
+      mxConstants.STYLE_ROTATION,
+      0,
+      0,
+      360,
+      "°",
+      null,
+      true
+    );
+  }
+
+  addListener() {
+    const { addKeyHandler, listeners, graph, listener, input } = this;
+    addKeyHandler(input, listener);
+    graph.getModel().addListener(mxEvent.CHANGE, listener);
+    listeners.push({
+      destroy: function () {
+        graph.getModel().removeListener(listener);
+      },
+    });
+  }
+
+  configureInput() {
+    const { listener, addListener, createUpdate, createListener, input } = this;
+    if (!input) return;
+    createListener();
+    createUpdate();
+    addListener();
+    listener();
+  }
+
+  /**
+   *
+   */
+  add(div) {
+    this.div = div;
+    const {
+      configureInput,
+      createSpan,
+      setDiv,
+      configureLabelsAndButtons,
+    } = this;
+    createSpan();
+    setDiv();
+    configureLabelsAndButtons();
+    configureInput();
     return div;
   }
 }
