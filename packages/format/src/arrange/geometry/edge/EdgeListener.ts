@@ -1,11 +1,8 @@
 import mx from "@mxgraph-app/mx";
-import { AbstractManager } from "./AbstractManager";
-const {
-  mxCellRenderer,
-  mxUtils,
-} = mx;
+import { EdgeManager } from "./EdgeManager";
+const { mxCellRenderer, mxUtils } = mx;
 
-export class EdgeListener extends AbstractManager {
+export class EdgeListener extends EdgeManager {
   handler = (_sender?, _evt?, force?) => {
     const { div, rect, graph, width, xs, ys, divs, divt, xt, yt } = this;
     var cell = graph.getSelectionCell();
@@ -17,7 +14,7 @@ export class EdgeListener extends AbstractManager {
         var value = mxUtils.getValue(
           rect.style,
           "width",
-          mxCellRenderer.defaultShapes["flexArrow"].prototype.defaultWidth,
+          mxCellRenderer.defaultShapes["flexArrow"].prototype.defaultWidth
         );
         width.value = value + " pt";
       }

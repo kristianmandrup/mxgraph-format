@@ -1,11 +1,8 @@
-import { AbstractManager } from "./AbstractManager";
+import { BasicManager } from "./BasicManager";
 import mx from "@mxgraph-app/mx";
-const {
-  mxResources,
-  mxUtils,
-} = mx;
+const { mxResources, mxUtils } = mx;
 
-export class BasicGeometryManager extends AbstractManager {
+export class BasicGeometryManager extends BasicManager {
   /**
    *
    */

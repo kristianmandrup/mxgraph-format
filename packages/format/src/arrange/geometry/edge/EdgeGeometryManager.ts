@@ -1,12 +1,8 @@
-import { AbstractManager } from "./AbstractManager";
+import { EdgeManager } from "./EdgeManager";
 import mx from "@mxgraph-app/mx";
-const {
-  mxResources,
-  mxEvent,
-  mxUtils,
-} = mx;
+const { mxResources, mxEvent, mxUtils } = mx;
 
-export class EdgeGeometryManager extends AbstractManager {
+export class EdgeGeometryManager extends EdgeManager {
   /**
    *
    */

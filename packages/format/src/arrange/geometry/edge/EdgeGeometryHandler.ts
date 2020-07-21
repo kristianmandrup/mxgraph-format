@@ -1,10 +1,8 @@
-import { AbstractManager } from "./AbstractManager";
+import { EdgeManager } from "./EdgeManager";
 import mx from "@mxgraph-app/mx";
-const {
-  mxEvent,
-} = mx;
+const { mxEvent } = mx;
 
-export class EdgeGeometryHandler extends AbstractManager {
+export class EdgeGeometryHandler extends EdgeManager {
   addEdgeGeometryHandler(input, fn) {
     var ui = this.editorUi;
     var graph = ui.editor.graph;

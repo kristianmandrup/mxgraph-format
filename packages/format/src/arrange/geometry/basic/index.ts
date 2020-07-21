@@ -1,3 +1,3 @@
-export * from "./AbstractManager";
+export * from "./BasicManager";
 export * from "./BasicGeometryHandler";
 export * from "./BasicGeometryManager";

@@ -1,10 +1,8 @@
-import { AbstractManager } from "./AbstractManager";
+import { BasicManager } from "./BasicManager";
 import mx from "@mxgraph-app/mx";
-const {
-  mxEvent,
-} = mx;
+const { mxEvent } = mx;
 
-export class BasicGeometryHandler extends AbstractManager {
+export class BasicGeometryHandler extends BasicManager {
   initialValue: any;
   input: any;
   fn: any;

@@ -1,12 +1,9 @@
 import mx from "@mxgraph-app/mx";
 import { EdgeListener } from "./EdgeListener";
 import { BaseManager } from "../BaseManager";
-const {
-  mxResources,
-  mxUtils,
-} = mx;
+const { mxResources, mxUtils } = mx;
 
-export class AbstractManager extends BaseManager {
+export class EdgeManager extends BaseManager {
   get div() {
     return this.createPanel();
   }
@@ -38,7 +35,7 @@ export class AbstractManager extends BaseManager {
     return new EdgeListener(this.editorUi, this.format, this.container).handler(
       sender,
       _evt,
-      force,
+      force
     );
   };
 
@@ -137,7 +134,7 @@ export class AbstractManager extends BaseManager {
       this.getUnitStep(),
       null,
       null,
-      this.isFloatUnit(),
+      this.isFloatUnit()
     );
   }
   get height() {
@@ -153,7 +150,7 @@ export class AbstractManager extends BaseManager {
       this.getUnitStep(),
       null,
       null,
-      this.isFloatUnit(),
+      this.isFloatUnit()
     );
   }
 }

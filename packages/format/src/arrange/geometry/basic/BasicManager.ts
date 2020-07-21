@@ -1,12 +1,8 @@
 import mx from "@mxgraph-app/mx";
 import { BaseManager } from "../BaseManager";
-const {
-  mxResources,
-  mxEvent,
-  mxUtils,
-} = mx;
+const { mxResources, mxEvent, mxUtils } = mx;
 
-export class AbstractManager extends BaseManager {
+export class BasicManager extends BaseManager {
   get rect() {
     return this.format.getSelectionState();
   }
@@ -87,7 +83,7 @@ export class AbstractManager extends BaseManager {
       this.getUnitStep(),
       null,
       null,
-      this.isFloatUnit(),
+      this.isFloatUnit()
     );
   }
 
@@ -104,7 +100,7 @@ export class AbstractManager extends BaseManager {
       this.getUnitStep(),
       null,
       null,
-      this.isFloatUnit(),
+      this.isFloatUnit()
     );
   }
 
@@ -127,7 +123,7 @@ export class AbstractManager extends BaseManager {
       this.getUnitStep(),
       null,
       null,
-      this.isFloatUnit(),
+      this.isFloatUnit()
     );
   }
 
@@ -144,7 +140,7 @@ export class AbstractManager extends BaseManager {
       this.getUnitStep(),
       null,
       null,
-      this.isFloatUnit(),
+      this.isFloatUnit()
     );
   }
 
@@ -157,7 +153,7 @@ export class AbstractManager extends BaseManager {
       mxResources.get("autosize") +
         " (" +
         this.editorUi.actions.get("autosize").shortcut +
-        ")",
+        ")"
     );
     autosizeBtn.style.position = "relative";
     autosizeBtn.style.cursor = "pointer";
@@ -205,12 +201,14 @@ export class AbstractManager extends BaseManager {
       div.style.display = "";
 
       if (force || document.activeElement != width) {
-        width.value = this.inUnit(rect.width) +
+        width.value =
+          this.inUnit(rect.width) +
           (rect.width == "" ? "" : " " + this.getUnit());
       }
 
       if (force || document.activeElement != height) {
-        height.value = this.inUnit(rect.height) +
+        height.value =
+          this.inUnit(rect.height) +
           (rect.height == "" ? "" : " " + this.getUnit());
       }
     } else {
@@ -225,13 +223,13 @@ export class AbstractManager extends BaseManager {
       div2.style.display = "";
 
       if (force || document.activeElement != left) {
-        left.value = this.inUnit(rect.x) +
-          (rect.x == "" ? "" : " " + this.getUnit());
+        left.value =
+          this.inUnit(rect.x) + (rect.x == "" ? "" : " " + this.getUnit());
       }
 
       if (force || document.activeElement != top) {
-        top.value = this.inUnit(rect.y) +
-          (rect.y == "" ? "" : " " + this.getUnit());
+        top.value =
+          this.inUnit(rect.y) + (rect.y == "" ? "" : " " + this.getUnit());
       }
     } else {
       div2.style.display = "none";

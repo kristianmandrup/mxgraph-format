@@ -1,8 +1,8 @@
-import { BaseArrangeFormat } from "../BaseArrangeFormat";
 import { BasicGeometryHandler } from "./basic";
 import { EdgeGeometryHandler } from "./edge";
+import { BaseFormatPanel } from "../../base";
 
-export class GeometryHandler extends BaseArrangeFormat {
+export class GeometryHandler extends BaseFormatPanel {
   basicGeometryHandler: any;
   edgeGeometryHandler: any;
 
@@ -13,19 +13,11 @@ export class GeometryHandler extends BaseArrangeFormat {
   }
 
   createBasicGeometryHandler() {
-    return new BasicGeometryHandler(
-      this.editorUi,
-      this.format,
-      this.container,
-    );
+    return new BasicGeometryHandler(this.editorUi, this.format, this.container);
   }
 
   createEdgeGeometryHandler() {
-    return new EdgeGeometryHandler(
-      this.editorUi,
-      this.format,
-      this.container,
-    );
+    return new EdgeGeometryHandler(this.editorUi, this.format, this.container);
   }
 
   addGeometryHandler(input, fn) {
