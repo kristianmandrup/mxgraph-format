@@ -2,6 +2,7 @@ import mx from "@mxgraph-app/mx";
 import { BaseStyleFormat } from "./BaseStyleFormat";
 import { Fill } from "./Fill";
 import { StrokeFormat } from "./stroke";
+import { Initializer } from "./Initializer";
 const {
   mxEventObject,
   mxConstants,
@@ -28,43 +29,11 @@ export class StyleFormatPanel extends BaseStyleFormat {
    * Adds the label menu items to the given menu and parent.
    */
   init() {
-    var ss = this.format.getSelectionState();
-
-    if (!ss.containsLabel) {
-      if (
-        ss.containsImage &&
-        ss.vertices.length == 1 &&
-        ss.style.shape == "image" &&
-        ss.style.image != null &&
-        ss.style.image.substring(0, 19) == "data:image/svg+xml;"
-      ) {
-        this.container.appendChild(this.addSvgStyles(this.createPanel()));
-      }
-
-      if (!ss.containsImage || ss.style.shape == "image") {
-        this.container.appendChild(this.addFill(this.createPanel()));
-      }
-
-      this.container.appendChild(this.addStroke(this.createPanel()));
-      this.container.appendChild(this.addLineJumps(this.createPanel()));
-      var opacityPanel = this.createRelativeOption(
-        mxResources.get("opacity"),
-        mxConstants.STYLE_OPACITY,
-        41
-      );
-      opacityPanel.style.paddingTop = "8px";
-      opacityPanel.style.paddingBottom = "8px";
-      this.container.appendChild(opacityPanel);
-      this.container.appendChild(this.addEffects(this.createPanel()));
-    }
-
-    var opsPanel = this.addEditOps(this.createPanel());
-
-    if (opsPanel.firstChild != null) {
-      mxUtils.br(opsPanel);
-    }
-
-    this.container.appendChild(this.addStyleOps(opsPanel));
+    new Initializer(this, {
+      format: this.format,
+      editorUi: this.editorUi,
+      container: this.container,
+    }).init();
   }
 
   /**
