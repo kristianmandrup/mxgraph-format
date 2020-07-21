@@ -1,28 +1,45 @@
 import mx from "@mxgraph-app/mx";
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
+import { BaseFormatPanel } from "../../../base";
 const { mxClient, mxConstants, mxResources } = mx;
 
-export class Align extends BaseArrangeFormat {
-  /**
-   * add alignment to div
-   */
-  add(div) {
-    var graph = this.editorUi.editor.graph;
+export class Align extends BaseFormatPanel {
+  div: any;
+  stylePanel: any;
+
+  buttons: any = {};
+
+  styleDiv() {
+    const { div } = this;
     div.style.paddingTop = "6px";
     div.style.paddingBottom = "12px";
-    div.appendChild(this.createTitle(mxResources.get("align")));
+    if (mxClient.IS_QUIRKS) {
+      div.style.height = "60px";
+    }
+  }
 
-    var stylePanel = document.createElement("div");
+  appendTitle() {
+    const { div } = this;
+    div.appendChild(this.createTitle(mxResources.get("align")));
+  }
+
+  createStylePanel() {
+    const stylePanel = document.createElement("div");
     stylePanel.style.position = "relative";
     stylePanel.style.paddingLeft = "0px";
     stylePanel.style.borderWidth = "0px";
     stylePanel.className = "geToolbarContainer";
+    this.stylePanel = stylePanel;
+    return stylePanel;
+  }
 
-    if (mxClient.IS_QUIRKS) {
-      div.style.height = "60px";
-    }
+  addButtons() {
+    const { addLeftBtn } = this;
+    addLeftBtn();
+  }
 
-    var left = this.editorUi.toolbar.addButton(
+  addLeftBtn() {
+    const { buttons, stylePanel, graph } = this;
+    buttons.left = this.editorUi.toolbar.addButton(
       "geSprite-alignleft",
       mxResources.get("left"),
       function () {
@@ -30,7 +47,12 @@ export class Align extends BaseArrangeFormat {
       },
       stylePanel
     );
-    var center = this.editorUi.toolbar.addButton(
+  }
+
+  addCenterBtn() {
+    const { buttons, stylePanel, graph } = this;
+
+    buttons.center = this.editorUi.toolbar.addButton(
       "geSprite-aligncenter",
       mxResources.get("center"),
       function () {
@@ -38,7 +60,12 @@ export class Align extends BaseArrangeFormat {
       },
       stylePanel
     );
-    var right = this.editorUi.toolbar.addButton(
+  }
+
+  addRightBtn() {
+    const { buttons, stylePanel, graph } = this;
+
+    buttons.right = this.editorUi.toolbar.addButton(
       "geSprite-alignright",
       mxResources.get("right"),
       function () {
@@ -46,8 +73,12 @@ export class Align extends BaseArrangeFormat {
       },
       stylePanel
     );
+  }
 
-    var top = this.editorUi.toolbar.addButton(
+  addTopBtn() {
+    const { buttons, stylePanel, graph } = this;
+
+    buttons.top = this.editorUi.toolbar.addButton(
       "geSprite-aligntop",
       mxResources.get("top"),
       function () {
@@ -55,7 +86,12 @@ export class Align extends BaseArrangeFormat {
       },
       stylePanel
     );
-    var middle = this.editorUi.toolbar.addButton(
+  }
+
+  addMiddleBtn() {
+    const { buttons, stylePanel, graph } = this;
+
+    buttons.middle = this.editorUi.toolbar.addButton(
       "geSprite-alignmiddle",
       mxResources.get("middle"),
       function () {
@@ -63,7 +99,12 @@ export class Align extends BaseArrangeFormat {
       },
       stylePanel
     );
-    var bottom = this.editorUi.toolbar.addButton(
+  }
+
+  addBottomBtn() {
+    const { buttons, stylePanel, graph } = this;
+
+    buttons.bottom = this.editorUi.toolbar.addButton(
       "geSprite-alignbottom",
       mxResources.get("bottom"),
       function () {
@@ -71,10 +112,31 @@ export class Align extends BaseArrangeFormat {
       },
       stylePanel
     );
+  }
 
+  addStyleButtons() {
+    const { addButtons } = this;
+    addButtons();
+
+    const { left, center, right, top, middle, bottom } = this.buttons;
     this.styleButtons([left, center, right, top, middle, bottom]);
     right.style.marginRight = "6px";
-    div.appendChild(stylePanel);
+  }
+
+  appendStylePanel() {
+    this.createStylePanel();
+    this.div.appendChild(this.stylePanel);
+  }
+
+  /**
+   * add alignment to div
+   */
+  add(div) {
+    const { addStyleButtons, styleDiv, appendTitle, appendStylePanel } = this;
+    styleDiv();
+    appendTitle();
+    addStyleButtons();
+    appendStylePanel();
 
     return div;
   }

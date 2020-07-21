@@ -1,8 +1,8 @@
 import mx from "@mxgraph-app/mx";
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
+import { BaseFormatPanel } from "../../../base";
 const { mxConstants, mxResources, mxUtils } = mx;
 
-export class Flip extends BaseArrangeFormat {
+export class Flip extends BaseFormatPanel {
   div: any;
 
   /**

@@ -1,5 +1,5 @@
-import { ArrangePanel } from "../../";
-import { editorUi as ui, format, container } from "../mocks";
+import { ArrangePanel } from "../../..";
+import { editorUi as ui, format, container } from "../../mocks";
 
 describe("ArrangePanel", () => {
   let instance, div;

@@ -1,8 +1,8 @@
 import mx from "@mxgraph-app/mx";
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
+import { BaseFormatPanel } from "../../../base";
 const { mxResources, mxUtils } = mx;
 
-export class Distribute extends BaseArrangeFormat {
+export class Distribute extends BaseFormatPanel {
   div: any;
 
   /**

@@ -10,19 +10,64 @@ import { ColorOption } from "./options/ColorOption";
 import { Arrow } from "./Arrow";
 import { RelativeOption } from "./options/RelativeOption";
 import { SelectionState } from "./SelectionState";
-const { mxUtils } = mx;
+const { mxUtils, mxResources } = mx;
 
 /**
  * Base class for format panels.
  */
 export class BaseFormatPanel extends Base {
-  documentMode: any;
   selection: any;
   buttons: Buttons;
+  format: any;
+  editorUi: any;
+  container: any;
+  listeners: any[] = [];
+  documentMode: any;
 
   constructor(format, editorUi, container) {
     super(format, editorUi, container);
     this.buttons = new Buttons();
+  }
+
+  createBtn(label, fn) {
+    return mxUtils.button(label, fn);
+  }
+
+  createBreak(elem) {
+    mxUtils.br(elem);
+  }
+
+  get ui() {
+    return this.editorUi;
+  }
+
+  get ss() {
+    return this.format.getSelectionState();
+  }
+
+  get editor() {
+    return this.editorUi.editor;
+  }
+
+  get actions() {
+    return this.editor.actions;
+  }
+
+  get hasEdges() {
+    const { ss } = this;
+    return ss.edges.length >= 0;
+  }
+
+  get hasVertices() {
+    return this.ss.vertices.length > 0;
+  }
+
+  resource(name) {
+    return mxResources.get(name);
+  }
+
+  get graph() {
+    return this.editor.graph;
   }
 
   /**
@@ -53,7 +98,7 @@ export class BaseFormatPanel extends Base {
     max,
     unit,
     textEditFallback?,
-    isFloat?,
+    isFloat?
   ) {
     return this.createInputHandlerInstaller().install(
       input,
@@ -63,7 +108,7 @@ export class BaseFormatPanel extends Base {
       max,
       unit,
       textEditFallback,
-      isFloat,
+      isFloat
     );
   }
 
@@ -71,7 +116,7 @@ export class BaseFormatPanel extends Base {
     return new InputHandlerInstaller(
       this.format,
       this.editorUi,
-      this.container,
+      this.container
     );
   }
 
@@ -100,7 +145,7 @@ export class BaseFormatPanel extends Base {
     height,
     disableFocus?,
     defaultValue?,
-    isFloat?,
+    isFloat?
   ) {
     return this.newStepper().create(
       input,
@@ -109,7 +154,7 @@ export class BaseFormatPanel extends Base {
       height,
       disableFocus,
       defaultValue,
-      isFloat,
+      isFloat
     );
   }
 
@@ -127,7 +172,7 @@ export class BaseFormatPanel extends Base {
       label,
       isCheckedFn,
       setCheckedFn,
-      listener,
+      listener
     );
   }
 
@@ -142,7 +187,7 @@ export class BaseFormatPanel extends Base {
     disabledValue,
     fn?,
     action?,
-    stopEditing?,
+    stopEditing?
   ) {
     return this.newCellOption().createCellOption(
       label,
@@ -152,7 +197,7 @@ export class BaseFormatPanel extends Base {
       disabledValue,
       fn,
       action,
-      stopEditing,
+      stopEditing
     );
   }
 
@@ -170,7 +215,7 @@ export class BaseFormatPanel extends Base {
     defaultColor,
     listener,
     callbackFn?,
-    hideCheckbox?,
+    hideCheckbox?
   ) {
     return this.newColorOption().createColorOption(
       label,
@@ -179,7 +224,7 @@ export class BaseFormatPanel extends Base {
       defaultColor,
       listener,
       callbackFn,
-      hideCheckbox,
+      hideCheckbox
     );
   }
 
@@ -195,14 +240,14 @@ export class BaseFormatPanel extends Base {
     colorKey,
     defaultColor?,
     callbackFn?,
-    setStyleFn?,
+    setStyleFn?
   ) {
     return this.newCellColorOption().create(
       label,
       colorKey,
       defaultColor,
       callbackFn,
-      setStyleFn,
+      setStyleFn
     );
   }
 

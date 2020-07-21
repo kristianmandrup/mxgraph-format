@@ -28,7 +28,7 @@ export class Base extends Unit {
     step?,
     marginTop?,
     disableFocus?,
-    isFloat?,
+    isFloat?
   ) {
     return this.newUnitInput().add(
       container,
@@ -39,7 +39,7 @@ export class Base extends Unit {
       step,
       marginTop,
       disableFocus,
-      isFloat,
+      isFloat
     );
   }
 

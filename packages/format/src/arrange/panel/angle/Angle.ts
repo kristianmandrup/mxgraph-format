@@ -1,8 +1,8 @@
 import mx from "@mxgraph-app/mx";
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
+import { BaseFormatPanel } from "../../../base";
 const { mxUtils, mxEvent, mxConstants } = mx;
 
-export class Angle extends BaseArrangeFormat {
+export class Angle extends BaseFormatPanel {
   div: any;
   span: any;
   input: any;

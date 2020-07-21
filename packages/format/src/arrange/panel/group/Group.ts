@@ -1,8 +1,8 @@
 import mx from "@mxgraph-app/mx";
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
+import { BaseFormatPanel } from "../../../base";
 const { mxResources, mxUtils } = mx;
 
-export class Group extends BaseArrangeFormat {
+export class Group extends BaseFormatPanel {
   div: any;
   count: number = 0;
 
@@ -169,68 +169,79 @@ export class Group extends BaseArrangeFormat {
     return true;
   }
 
+  appendEditDataBtn() {
+    const { div } = this;
+    const btn = mxUtils.button(mxResources.get("editData"), (_evt) => {
+      this.editorUi.actions.get("editData").funct();
+    });
+
+    btn.setAttribute(
+      "title",
+      mxResources.get("editData") +
+        " (" +
+        this.editorUi.actions.get("editData").shortcut +
+        ")"
+    );
+    btn.style.width = "100px";
+    btn.style.marginBottom = "2px";
+    div.appendChild(btn);
+    this.count++;
+  }
+
+  appendEditLinkBtn() {
+    const { div } = this;
+    const btn = mxUtils.button(mxResources.get("editLink"), (_evt) => {
+      this.editorUi.actions.get("editLink").funct();
+    });
+
+    btn.setAttribute("title", mxResources.get("editLink"));
+    btn.style.width = "100px";
+    btn.style.marginLeft = "2px";
+    btn.style.marginBottom = "2px";
+    div.appendChild(btn);
+    this.count++;
+  }
+
+  onOneSelected() {
+    const { graph, div, appendEditDataBtn, appendEditLinkBtn } = this;
+    if (graph.getSelectionCount() == 1) {
+      const { count } = this;
+      if (count > 0) {
+        mxUtils.br(div);
+      }
+      appendEditDataBtn();
+      appendEditLinkBtn();
+    }
+  }
+
   /**
    *
    */
   add(div) {
     const {
-      graph,
       styleDiv,
       onMultiSelect,
       onSingleSelect,
       onHasVertices,
       onSingleSelectAndVertex,
       onSelected,
+      onOneSelected,
+      hideDivIfNone,
     } = this;
     this.div = div;
-
-    var btn: any = null;
-
     styleDiv();
-
     onMultiSelect() || onSingleSelect();
-
     onHasVertices();
     onSingleSelectAndVertex() || onSelected();
+    onOneSelected();
+    hideDivIfNone();
+    return div;
+  }
 
-    if (graph.getSelectionCount() == 1) {
-      const { count } = this;
-      if (count > 0) {
-        mxUtils.br(div);
-      }
-
-      btn = mxUtils.button(mxResources.get("editData"), (_evt) => {
-        this.editorUi.actions.get("editData").funct();
-      });
-
-      btn.setAttribute(
-        "title",
-        mxResources.get("editData") +
-          " (" +
-          this.editorUi.actions.get("editData").shortcut +
-          ")"
-      );
-      btn.style.width = "100px";
-      btn.style.marginBottom = "2px";
-      div.appendChild(btn);
-      this.count++;
-
-      btn = mxUtils.button(mxResources.get("editLink"), (_evt) => {
-        this.editorUi.actions.get("editLink").funct();
-      });
-
-      btn.setAttribute("title", mxResources.get("editLink"));
-      btn.style.width = "100px";
-      btn.style.marginLeft = "2px";
-      btn.style.marginBottom = "2px";
-      div.appendChild(btn);
-      this.count++;
-    }
-
-    if (this.count == 0) {
+  hideDivIfNone() {
+    const { div, count } = this;
+    if (count == 0) {
       div.style.display = "none";
     }
-
-    return div;
   }
 }

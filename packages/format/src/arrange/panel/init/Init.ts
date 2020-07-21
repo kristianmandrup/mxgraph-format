@@ -1,9 +1,9 @@
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
 import mx from "@mxgraph-app/mx";
 const { mxResources, mxUtils } = mx;
+import { BaseFormatPanel } from "../../../base";
 import { StyleFormatPanel } from "../../../style";
 
-export class PanelInit extends BaseArrangeFormat {
+export class PanelInit extends BaseFormatPanel {
   panel: any;
 
   /**

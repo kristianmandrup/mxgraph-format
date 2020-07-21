@@ -1,43 +1,47 @@
 import mx from "@mxgraph-app/mx";
-import { BaseArrangeFormat } from "../../BaseArrangeFormat";
+import { BaseFormatPanel } from "../../../base";
 const { mxResources, mxUtils } = mx;
 
-export class Layer extends BaseArrangeFormat {
-  /**
-   *
-   */
-  add(div) {
-    var ui = this.editorUi;
+export class Layer extends BaseFormatPanel {
+  div: any;
 
-    var btn = mxUtils.button(mxResources.get("toFront"), (_evt) => {
-      ui.actions.get("toFront").funct();
+  appendToFrontBtn() {
+    const { div, actions, resource } = this;
+    const btn = mxUtils.button(resource("toFront"), (_evt) => {
+      actions.get("toFront").funct();
     });
 
     btn.setAttribute(
       "title",
-      mxResources.get("toFront") +
-        " (" +
-        this.editorUi.actions.get("toFront").shortcut +
-        ")"
+      resource("toFront") + " (" + actions.get("toFront").shortcut + ")"
     );
     btn.style.width = "100px";
     btn.style.marginRight = "2px";
     div.appendChild(btn);
+  }
 
-    var btn = mxUtils.button(mxResources.get("toBack"), (_evt) => {
-      ui.actions.get("toBack").funct();
+  appendToBackBtn() {
+    const { div, actions, resource } = this;
+    const btn = mxUtils.button(resource("toBack"), (_evt) => {
+      actions.get("toBack").funct();
     });
 
     btn.setAttribute(
       "title",
-      mxResources.get("toBack") +
-        " (" +
-        this.editorUi.actions.get("toBack").shortcut +
-        ")"
+      mxResources.get("toBack") + " (" + actions.get("toBack").shortcut + ")"
     );
     btn.style.width = "100px";
     div.appendChild(btn);
+  }
 
+  /**
+   *
+   */
+  add(div) {
+    this.div = div;
+    const { appendToFrontBtn, appendToBackBtn } = this;
+    appendToFrontBtn();
+    appendToBackBtn();
     return div;
   }
 }
