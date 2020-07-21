@@ -3,23 +3,41 @@ import { BaseArrangeFormat } from "../../BaseArrangeFormat";
 const { mxConstants, mxResources, mxUtils } = mx;
 
 export class Flip extends BaseArrangeFormat {
+  div: any;
+
   /**
    *
    */
   add(div) {
-    var ui = this.editorUi;
-    var editor = ui.editor;
-    var graph = editor.graph;
-    div.style.paddingTop = "6px";
-    div.style.paddingBottom = "10px";
+    const {
+      styleDiv,
+      appendFlipLabel,
+      appendHorizontalBtn,
+      appendVerticalBtn,
+    } = this;
+    this.div = div;
 
-    var span = document.createElement("div");
-    span.style.marginTop = "2px";
-    span.style.marginBottom = "8px";
-    span.style.fontWeight = "bold";
-    mxUtils.write(span, mxResources.get("flip"));
-    div.appendChild(span);
+    styleDiv();
+    appendFlipLabel();
+    appendHorizontalBtn();
+    appendVerticalBtn();
 
+    return div;
+  }
+
+  appendVerticalBtn() {
+    const { div, graph } = this;
+    var btn = mxUtils.button(mxResources.get("vertical"), (_evt) => {
+      graph.toggleCellStyles(mxConstants.STYLE_FLIPV, false);
+    });
+
+    btn.setAttribute("title", mxResources.get("vertical"));
+    btn.style.width = "100px";
+    div.appendChild(btn);
+  }
+
+  appendHorizontalBtn() {
+    const { div, graph } = this;
     var btn = mxUtils.button(mxResources.get("horizontal"), (_evt) => {
       graph.toggleCellStyles(mxConstants.STYLE_FLIPH, false);
     });
@@ -28,15 +46,21 @@ export class Flip extends BaseArrangeFormat {
     btn.style.width = "100px";
     btn.style.marginRight = "2px";
     div.appendChild(btn);
+  }
 
-    var btn = mxUtils.button(mxResources.get("vertical"), (_evt) => {
-      graph.toggleCellStyles(mxConstants.STYLE_FLIPV, false);
-    });
+  styleDiv() {
+    const { div } = this;
+    div.style.paddingTop = "6px";
+    div.style.paddingBottom = "10px";
+  }
 
-    btn.setAttribute("title", mxResources.get("vertical"));
-    btn.style.width = "100px";
-    div.appendChild(btn);
-
-    return div;
+  appendFlipLabel() {
+    const { div } = this;
+    var span = document.createElement("div");
+    span.style.marginTop = "2px";
+    span.style.marginBottom = "8px";
+    span.style.fontWeight = "bold";
+    mxUtils.write(span, mxResources.get("flip"));
+    div.appendChild(span);
   }
 }

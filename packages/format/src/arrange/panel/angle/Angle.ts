@@ -1,6 +1,6 @@
 import mx from "@mxgraph-app/mx";
 import { BaseArrangeFormat } from "../../BaseArrangeFormat";
-const { mxUtils, mxEvent, mxConstants, mxResources } = mx;
+const { mxUtils, mxEvent, mxConstants } = mx;
 
 export class Angle extends BaseArrangeFormat {
   div: any;
@@ -31,11 +31,6 @@ export class Angle extends BaseArrangeFormat {
     }
   }
 
-  get hasEdges() {
-    const { ss } = this;
-    return ss.edges.length >= 0;
-  }
-
   createInput() {
     const { div, addUnitInput, update } = this;
     this.input = addUnitInput(
@@ -54,10 +49,10 @@ export class Angle extends BaseArrangeFormat {
   }
 
   withoutEdges() {
-    const { createInput, hasEdges, div, span } = this;
+    const { createInput, resource, hasEdges, div, span } = this;
     if (hasEdges) return;
     createInput();
-    mxUtils.write(span, mxResources.get("angle"));
+    mxUtils.write(span, resource("angle"));
     div.appendChild(span);
     mxUtils.br(div);
     div.style.paddingTop = "10px";
@@ -70,14 +65,14 @@ export class Angle extends BaseArrangeFormat {
   }
 
   createBtn() {
-    const { label, ui, div, input } = this;
+    const { label, ui, div, input, actions } = this;
     const btn = mxUtils.button(label, (evt) => {
       ui.actions.get("turn").funct(evt);
     });
 
     btn.setAttribute(
       "title",
-      label + " (" + this.editorUi.actions.get("turn").shortcut + ")"
+      label + " (" + actions.get("turn").shortcut + ")"
     );
     btn.style.width = "202px";
     div.appendChild(btn);
@@ -89,17 +84,29 @@ export class Angle extends BaseArrangeFormat {
     return btn;
   }
 
-  configureLabelsAndButtons() {
+  get hasVerticesAndEdges() {
+    return this.hasVertices && this.hasEdges;
+  }
+
+  getLabel() {
+    const { resource, hasVertices, hasVerticesAndEdges } = this;
+    let label = resource("reverse");
+    if (hasVerticesAndEdges) {
+      return resource("turn") + " / " + label;
+    } else if (hasVertices) {
+      return resource("turn");
+    }
+    return label;
+  }
+
+  createLabel() {
     const { ss } = this;
     if (ss.containsLabel) return;
-    let label = mxResources.get("reverse");
+    this.label = this.getLabel();
+  }
 
-    if (ss.vertices.length > 0 && ss.edges.length > 0) {
-      label = mxResources.get("turn") + " / " + label;
-    } else if (ss.vertices.length > 0) {
-      label = mxResources.get("turn");
-    }
-    this.label = label;
+  configureLabelsAndButtons() {
+    this.createLabel();
     this.createBtn();
   }
 
