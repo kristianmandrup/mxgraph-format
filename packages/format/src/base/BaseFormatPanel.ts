@@ -22,11 +22,16 @@ export class BaseFormatPanel extends Base {
   editorUi: any;
   container: any;
   listeners: any[] = [];
+  panels: any[] = [];
   documentMode: any;
 
   constructor(format, editorUi, container) {
     super(format, editorUi, container);
     this.buttons = new Buttons();
+  }
+
+  write(target, resource) {
+    mxUtils.write(target, resource);
   }
 
   createBtn(label, fn) {
