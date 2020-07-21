@@ -7,6 +7,7 @@ export class SelectionStateUpdater extends BaseFormatPanel {
   cell: any;
   result: any;
   cells: any;
+  geo: any;
 
   stateChecker: any;
 
@@ -25,7 +26,22 @@ export class SelectionStateUpdater extends BaseFormatPanel {
     result.vertices.push(cell);
     var geo = graph.getCellGeometry(cell);
     if (!geo) return;
-    if (geo.width > 0) {
+
+    const { adjustWidth, adjustHeight, adjustOffset } = this;
+    adjustWidth();
+    adjustHeight();
+    adjustOffset();
+
+    return true;
+  }
+
+  get hasWidth() {
+    return this.geo.width > 0;
+  }
+
+  adjustWidth() {
+    const { geo, result, hasWidth } = this;
+    if (hasWidth) {
       if (result.width == null) {
         result.width = geo.width;
       } else if (result.width != geo.width) {
@@ -34,8 +50,15 @@ export class SelectionStateUpdater extends BaseFormatPanel {
     } else {
       result.containsLabel = true;
     }
+  }
 
-    if (geo.height > 0) {
+  get hasHeight() {
+    return this.geo.height > 0;
+  }
+
+  adjustHeight() {
+    const { geo, result, hasHeight } = this;
+    if (hasHeight) {
       if (result.height == null) {
         result.height = geo.height;
       } else if (result.height != geo.height) {
@@ -44,24 +67,30 @@ export class SelectionStateUpdater extends BaseFormatPanel {
     } else {
       result.containsLabel = true;
     }
+  }
 
-    if (!geo.relative || geo.offset) {
-      var x = geo.relative ? geo.offset.x : geo.x;
-      var y = geo.relative ? geo.offset.y : geo.y;
+  get shouldAdjustOffset() {
+    const { geo } = this;
+    return !geo.relative || geo.offset;
+  }
 
-      if (result.x == null) {
-        result.x = x;
-      } else if (result.x != x) {
-        result.x = "";
-      }
+  adjustOffset() {
+    const { shouldAdjustOffset, result, geo } = this;
+    if (!shouldAdjustOffset) return;
+    var x = geo.relative ? geo.offset.x : geo.x;
+    var y = geo.relative ? geo.offset.y : geo.y;
 
-      if (result.y == null) {
-        result.y = y;
-      } else if (result.y != y) {
-        result.y = "";
-      }
+    if (result.x == null) {
+      result.x = x;
+    } else if (result.x != x) {
+      result.x = "";
     }
-    return true;
+
+    if (result.y == null) {
+      result.y = y;
+    } else if (result.y != y) {
+      result.y = "";
+    }
   }
 
   isEdgeCell(cell) {
