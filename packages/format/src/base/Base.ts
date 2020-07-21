@@ -1,6 +1,6 @@
 import mx from "@mxgraph-app/mx";
 import { UnitInput } from "./UnitInput";
-import { Unit } from "../Unit";
+import { Unit } from "../format/Unit";
 const { mxEvent, mxUtils } = mx;
 
 export class Base extends Unit {
