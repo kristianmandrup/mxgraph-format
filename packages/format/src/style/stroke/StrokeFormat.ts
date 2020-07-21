@@ -13,8 +13,9 @@ export class StrokeFormat extends AbstractStrokeFormat {
   /**
    * Adds the label menu items to the given menu and parent.
    */
-  add() {
-    const { graph, container, styleSelect, styles, listener } = this;
+  add(container?) {
+    container = container || this.container;
+    const { graph, styleSelect, styles, listener } = this;
     container.style.paddingTop = "4px";
     container.style.paddingBottom = "4px";
     container.style.whiteSpace = "normal";
@@ -28,13 +29,25 @@ export class StrokeFormat extends AbstractStrokeFormat {
       styleSelect.appendChild(styleOption);
     }
 
-    const { lineColor, colorPanel, stylePanel, update, altUpdate, altPattern } =
-      this;
+    const {
+      lineColor,
+      colorPanel,
+      stylePanel,
+      update,
+      altUpdate,
+      altPattern,
+    } = this;
     lineColor.appendChild(styleSelect);
     colorPanel.appendChild(lineColor);
 
-    const { input, altInput, stepper, altStepper, altStylePanel, stylePanel2 } =
-      this;
+    const {
+      input,
+      altInput,
+      stepper,
+      altStepper,
+      altStylePanel,
+      stylePanel2,
+    } = this;
 
     stylePanel.appendChild(input);
     altStylePanel.appendChild(altInput);

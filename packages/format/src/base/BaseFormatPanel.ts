@@ -187,9 +187,9 @@ export class BaseFormatPanel extends Base {
   createCellOption(
     label,
     key,
-    defaultValue,
-    enabledValue,
-    disabledValue,
+    defaultValue?,
+    enabledValue?,
+    disabledValue?,
     fn?,
     action?,
     stopEditing?
