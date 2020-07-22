@@ -17,7 +17,7 @@ export class ContainerPanel extends BaseFormatPanel {
   }
 
   createToolbarFormatButtons(): any {
-    return {}; // new ToolbarFormatButtons();
+    return new ToolbarFormatButtons(this.editorUi);
   }
 
   append() {

@@ -15,6 +15,17 @@ describe("BackgroundPanel", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // currentBgColor: any;
+      // bgColorApply: any;
+    });
+
+    describe("methods", () => {
+      describe("create()", () => {
+        it("creates background panel", () => {
+          expect(instance.create()).toBeDefined();
+        });
+      });
     });
   });
 });

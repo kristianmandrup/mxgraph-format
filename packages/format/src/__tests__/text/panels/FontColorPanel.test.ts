@@ -15,6 +15,17 @@ describe("FontColorPanel", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // editFontColorOption
+      // fontColorOption
+    });
+  });
+
+  describe("methods", () => {
+    describe("create()", () => {
+      it("creates instance", () => {
+        expect(instance.create()).toBeDefined();
+      });
     });
   });
 });

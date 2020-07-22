@@ -1,10 +1,10 @@
-import { ExtraPanel } from "../../../text";
+import { Font } from "../../../text";
 import { editorUi as ui, format, container, editorUi } from "../../mocks";
 
-describe("ExtraPanel", () => {
+describe("Font", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new ExtraPanel(format, editorUi, container);
+    instance = new Font(format, editorUi, container);
     div = document.createElement("div");
   });
 
@@ -18,9 +18,10 @@ describe("ExtraPanel", () => {
     });
 
     describe("methods", () => {
-      describe("create()", () => {
-        it("creates instance", () => {
-          expect(instance.create()).toBeDefined();
+      describe("addFont(container)", () => {
+        it("adds font panel to container", () => {
+          const container = document.createElement("div");
+          expect(instance.addFont(container)).toBeDefined();
         });
       });
     });

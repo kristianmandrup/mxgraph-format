@@ -15,6 +15,16 @@ describe("PositionChangeListener", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // positionSelect: any;
+    });
+
+    describe("methods", () => {
+      describe("add()", () => {
+        it("adds listener", () => {
+          expect(instance.add()).toBe(ui);
+        });
+      });
     });
   });
 });

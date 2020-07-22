@@ -39,7 +39,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
         mxEvent.addListener(
           graph.cellEditor.textarea,
           "DOMSubtreeModified",
-          updateCssHandler,
+          updateCssHandler
         );
       }
 
@@ -47,12 +47,12 @@ export class UpdateCssHandler extends BaseFormatHandler {
       mxEvent.addListener(
         graph.cellEditor.textarea,
         "touchend",
-        updateCssHandler,
+        updateCssHandler
       );
       mxEvent.addListener(
         graph.cellEditor.textarea,
         "mouseup",
-        updateCssHandler,
+        updateCssHandler
       );
       mxEvent.addListener(graph.cellEditor.textarea, "keyup", updateCssHandler);
       this.listeners.push({
@@ -66,12 +66,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
 
   updateCssHandler = () => {
     const { graph, setSelected, fontStyleItems, sup, sub, ss } = this;
-    const {
-      full,
-      left,
-      center,
-      right,
-    } = this;
+    const { full, left, center, right } = this;
 
     const {
       currentTable,
@@ -116,8 +111,8 @@ export class UpdateCssHandler extends BaseFormatHandler {
               if (
                 elt.style.lineHeight != null &&
                 elt.style.lineHeight.substring(
-                    elt.style.lineHeight.length - 1,
-                  ) == "%"
+                  elt.style.lineHeight.length - 1
+                ) == "%"
               ) {
                 return parseInt(elt.style.lineHeight) / 100;
               } else {
@@ -175,7 +170,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
           function hasParentOrOnlyChild(name) {
             if (
               graph.getParentByName(node, name, graph.cellEditor.textarea) !=
-                null
+              null
             ) {
               return true;
             } else {
@@ -200,7 +195,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
               } else if (str.length > value.length + 1) {
                 return (
                   str.substring(str.length - value.length - 1, str.length) ==
-                    "-" + value
+                  "-" + value
                 );
               }
             }
@@ -214,24 +209,25 @@ export class UpdateCssHandler extends BaseFormatHandler {
               css.fontWeight == "bold" ||
                 css.fontWeight > 400 ||
                 hasParentOrOnlyChild("B") ||
-                hasParentOrOnlyChild("STRONG"),
+                hasParentOrOnlyChild("STRONG")
             );
             setSelected(
               fontStyleItems[1],
               css.fontStyle == "italic" ||
                 hasParentOrOnlyChild("I") ||
-                hasParentOrOnlyChild("EM"),
+                hasParentOrOnlyChild("EM")
             );
             setSelected(fontStyleItems[2], hasParentOrOnlyChild("U"));
             setSelected(sup, hasParentOrOnlyChild("SUP"));
             setSelected(sub, hasParentOrOnlyChild("SUB"));
 
             if (!graph.cellEditor.isTableSelected()) {
-              var align = graph.cellEditor.align ||
+              var align =
+                graph.cellEditor.align ||
                 mxUtils.getValue(
                   ss.style,
                   mxConstants.STYLE_ALIGN,
-                  mxConstants.ALIGN_CENTER,
+                  mxConstants.ALIGN_CENTER
                 );
 
               if (isEqualOrPrefixed(css.textAlign, "justify")) {
@@ -255,14 +251,16 @@ export class UpdateCssHandler extends BaseFormatHandler {
             this.currentTable = graph.getParentByName(
               node,
               "TABLE",
-              graph.cellEditor.textarea,
+              graph.cellEditor.textarea
             );
-            this.tableRow = currentTable == null
-              ? null
-              : graph.getParentByName(node, "TR", currentTable);
-            this.tableCell = currentTable == null
-              ? null
-              : graph.getParentByNames(node, ["TD", "TH"], currentTable);
+            this.tableRow =
+              currentTable == null
+                ? null
+                : graph.getParentByName(node, "TR", currentTable);
+            this.tableCell =
+              currentTable == null
+                ? null
+                : graph.getParentByNames(node, ["TD", "TH"], currentTable);
             tableWrapper.style.display = currentTable != null ? "" : "none";
 
             if (document.activeElement != input) {
@@ -297,7 +295,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
                   ("0" + Number($2).toString(16)).substr(-2) +
                   ("0" + Number($3).toString(16)).substr(-2)
                 );
-              },
+              }
             );
             var color2 = css.backgroundColor.replace(
               /\brgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/g,
@@ -308,7 +306,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
                   ("0" + Number($2).toString(16)).substr(-2) +
                   ("0" + Number($3).toString(16)).substr(-2)
                 );
-              },
+              }
             );
 
             // Updates the color picker for the current font

@@ -33,12 +33,14 @@ export class ToolbarFormatButtons {
     this.addBtns1();
     this.addBtns2();
     this.addBtns3();
+    return this;
   }
 
   addBtns() {
     const { insertPanel, toolbar } = this;
     var insertBtns = toolbar.addItems(["link", "image"], insertPanel, true);
     this.styleButtons(insertBtns);
+    return this;
   }
 
   addBtns1() {

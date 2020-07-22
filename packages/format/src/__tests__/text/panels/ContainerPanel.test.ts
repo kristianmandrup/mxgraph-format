@@ -16,5 +16,22 @@ describe("ContainerPanel", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("createToolbarFormatButtons()", () => {
+        it("creates instance", () => {
+          expect(instance.createToolbarFormatButtons()).toBeDefined();
+        });
+      });
+    });
+    //
+
+    // REFACTOR
+    // append()
+
+    // addBtns()
+    // addBtns1()
+    // addBtns2()
+    // addBtns3()
   });
 });

@@ -16,13 +16,13 @@ export class FontColorPanel extends BaseFormatPanel {
   create() {
     const { graph } = this;
     const panel = graph.cellEditor.isContentEditing()
-      ? this.editFontColorOption()
-      : this.fontColorOption();
+      ? this.editFontColorOption
+      : this.fontColorOption;
     panel.style.fontWeight = "bold";
     return panel;
   }
 
-  editFontColorOption() {
+  get editFontColorOption() {
     const { currentFontColor, graph } = this;
     return this.createColorOption(
       mxResources.get("fontColor"),
@@ -107,7 +107,7 @@ export class FontColorPanel extends BaseFormatPanel {
     );
   }
 
-  fontColorOption() {
+  get fontColorOption() {
     const { bgPanel, borderPanel, graph } = this;
     return this.createCellColorOption(
       mxResources.get("fontColor"),

@@ -15,6 +15,37 @@ describe("UpdateCssHandler", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // setSelected: any;
+      // fontStyleItems: any;
+      // sup: any;
+      // sub: any;
+
+      // full: any;
+      // left: any;
+      // center: any;
+      // right: any;
+
+      // currentTable: any;
+      // tableRow: any;
+      // tableCell: any;
+      // tableWrapper: any;
+      // pendingFontSize: any;
+      // input: any;
+      // lineHeightInput: any;
+      // fontMenu: any;
+      // currentFontColor: any;
+      // fontColorApply: any;
+      // currentBgColor: any;
+      // bgColorApply: any;
+    });
+
+    describe("methods", () => {
+      describe("create()", () => {
+        it("creates update css handler", () => {
+          expect(instance.create()).toBeDefined();
+        });
+      });
     });
   });
 });

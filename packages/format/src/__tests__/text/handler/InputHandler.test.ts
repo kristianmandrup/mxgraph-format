@@ -15,6 +15,19 @@ describe("InputHandler", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // input: any;
+      // installInputHandler: any;
+      // defaultFontSize: any;
+      // pendingFontSize: any;
+    });
+
+    describe("methods", () => {
+      describe("create()", () => {
+        it("creates input handler", () => {
+          expect(instance.create()).toBeDefined();
+        });
+      });
     });
   });
 });
