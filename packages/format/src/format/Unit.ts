@@ -1,7 +1,5 @@
 import mx from "@mxgraph-app/mx";
-const {
-  mxConstants,
-} = mx;
+const { mxConstants } = mx;
 
 const POINTS = mxConstants["POINTS"];
 const INCHES = mxConstants["INCHES"];
@@ -19,7 +17,7 @@ export class Unit {
     this.container = container;
   }
 
-  getUnit() {
+  get unit() {
     var unit = this.editorUi.editor.graph.view.unit;
 
     switch (unit) {
@@ -51,11 +49,11 @@ export class Unit {
     }
   }
 
-  isFloatUnit() {
+  get isFloatUnit() {
     return this.editorUi.editor.graph.view.unit != POINTS;
   }
 
-  getUnitStep() {
+  get unitStep() {
     var unit = this.editorUi.editor.graph.view.unit;
 
     switch (unit) {

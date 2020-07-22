@@ -16,5 +16,63 @@ describe("StateChecker", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("isFillState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isFillState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isFillState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isGlassState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isRoundedState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isRoundedState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isLineJumpState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isLineJumpState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isComicState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isComicState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isAutoSizeState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isAutoSizeState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isImageState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isImageState(state)).toBeFalsy();
+        });
+      });
+
+      describe("isShadowState(state)", () => {
+        it("is false", () => {
+          const state = {};
+          expect(instance.isShadowState(state)).toBeFalsy();
+        });
+      });
+    });
   });
 });

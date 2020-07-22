@@ -16,5 +16,73 @@ describe("Format", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("update(sender, evt)", () => {
+        it("updates", () => {
+          const sender = {};
+          const evt = {};
+          expect(() => instance.update(sender, evt)).not.toThrow();
+        });
+      });
+
+      describe("refresh()", () => {
+        it("refreshes", () => {
+          expect(() => instance.refresh()).not.toThrow();
+        });
+      });
+
+      describe("init()", () => {
+        it("inits", () => {
+          expect(() => instance.init()).not.toThrow();
+        });
+      });
+
+      describe("clearSelectionState()", () => {
+        it("clears selection state", () => {
+          expect(() => instance.clearSelectionState()).not.toThrow();
+        });
+      });
+
+      describe("getSelectionState()", () => {
+        it("clears selection state", () => {
+          expect(instance.getSelectionState()).toBeDefined();
+        });
+      });
+
+      describe("createSelectionState()", () => {
+        it("clears selection state", () => {
+          expect(instance.createSelectionState()).toBeDefined();
+        });
+      });
+
+      describe("initSelectionState()", () => {
+        it("inits selection state", () => {
+          expect(instance.initSelectionState()).toBeDefined();
+        });
+      });
+
+      describe("updateSelectionStateForCell(result, cell, cells)", () => {
+        it("updates selection state for cell", () => {
+          const result = {};
+          const cell = {};
+          const cells = [{}];
+          expect(() =>
+            instance.updateSelectionStateForCell(result, cell, cells)
+          ).not.toThrow();
+        });
+      });
+
+      describe("clear()", () => {
+        it("no throw", () => {
+          expect(() => instance.clear()).not.toThrow();
+        });
+
+        it("to clear list of panels", () => {
+          instance.clear();
+          expect(instance.panels).toEqual([]);
+        });
+      });
+    });
   });
 });

@@ -87,10 +87,9 @@ export class Format extends Unit {
    * Returns information about the current selection.
    */
   getSelectionState() {
-    if (this.selectionState == null) {
+    if (!this.selectionState) {
       this.selectionState = this.createSelectionState();
     }
-
     return this.selectionState;
   }
 
@@ -101,9 +100,9 @@ export class Format extends Unit {
     var cells = this.editorUi.editor.graph.getSelectionCells();
     var result = this.initSelectionState();
 
-    for (var i = 0; i < cells.length; i++) {
-      this.updateSelectionStateForCell(result, cells[i], cells);
-    }
+    cells.map((cell) => {
+      this.updateSelectionStateForCell(result, cell, cells);
+    });
 
     return result;
   }
@@ -142,6 +141,7 @@ export class Format extends Unit {
       this.editorUi,
       this.container
     ).updateSelectionStateForCell(result, cell, cells);
+    return this;
   }
 
   /**
@@ -158,5 +158,6 @@ export class Format extends Unit {
     }
 
     this.panels = [];
+    return this;
   }
 }
