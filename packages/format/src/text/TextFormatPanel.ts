@@ -1,6 +1,5 @@
 import mx from "@mxgraph-app/mx";
 import { BaseFormatPanel } from "../base";
-import { UpdateCssHandler } from "./handler";
 import {
   ContainerPanel,
   ExtraPanel,
@@ -8,9 +7,10 @@ import {
   BackgroundPanel,
 } from "./panels";
 import { InputHandler } from "./handler";
-import { TextFormatListener, PositionChangeListener } from "./listener";
+import { TextFormatListener } from "./listener";
 import { ToolbarFormatButtons } from "./buttons";
-const { mxConstants, mxClient, mxResources, mxEvent, mxUtils } = mx;
+import { Font } from "./font";
+const { mxConstants, mxClient, mxResources, mxUtils } = mx;
 
 const panelMap = {
   background: BackgroundPanel,
@@ -59,22 +59,6 @@ export class TextFormatPanel extends BaseFormatPanel {
     this.init();
   }
 
-  createToolbarFormatButtons(): any {
-    return {}; // new ToolbarFormatButtons();
-  }
-
-  /**
-   * Adds the label menu items to the given menu and parent.
-   */
-  init() {
-    this.container.style.borderBottom = "none";
-    this.addFont(this.container);
-  }
-
-  listener = () => {
-    return new TextFormatListener().listener;
-  };
-
   get editor() {
     return this.editorUi.editor;
   }
@@ -85,123 +69,6 @@ export class TextFormatPanel extends BaseFormatPanel {
 
   get ss() {
     return this.format.getSelectionState();
-  }
-
-  /**
-   * Adds the label menu items to the given menu and parent.
-   */
-  addFont(container) {
-    var title = this.createContainerTitle();
-    container.appendChild(title);
-
-    this.stylePanel = this.createStylePanel();
-    container.appendChild(this.stylePanel);
-
-    if (mxClient.IS_QUIRKS) {
-      mxUtils.br(container);
-    }
-
-    const { graph, stylePanel2, dirs, dirSet } = this;
-
-    container.appendChild(stylePanel2);
-
-    this.appendStylePanel3();
-
-    // Hack for updating UI state below based on current text selection
-    // currentTable is the current selected DOM table updated below
-    this.updateUiOnCurrentTextSelection();
-
-    // Label position
-    var stylePanel4: any = this.createStylePanel4();
-
-    // Adds label position options
-    var positionSelect = this.createPositionSelect();
-
-    stylePanel4.appendChild(positionSelect);
-
-    // Writing direction
-    var stylePanel5: any = this.createStylePanel5();
-
-    // Adds writing direction options
-    // LATER: Handle reselect of same option in all selects (change event
-    // is not fired for same option so have opened state on click) and
-    // handle multiple different styles for current selection
-    var dirSelect = this.createDirSelect();
-
-    for (var i = 0; i < dirs.length; i++) {
-      var dirOption = document.createElement("option");
-      dirOption.setAttribute("value", dirs[i]);
-      mxUtils.write(dirOption, mxResources.get(dirs[i]));
-      dirSelect.appendChild(dirOption);
-    }
-
-    stylePanel5.appendChild(dirSelect);
-
-    if (!graph.isEditing()) {
-      container.appendChild(stylePanel4);
-
-      new PositionChangeListener(
-        this.format,
-        this.editorUi,
-        this.container
-      ).add();
-
-      // LATER: Update dir in text editor while editing and update style with label
-      // NOTE: The tricky part is handling and passing on the auto value
-      container.appendChild(stylePanel5);
-
-      mxEvent.addListener(dirSelect, "change", function (evt) {
-        graph.setCellStyles(
-          mxConstants.STYLE_TEXT_DIRECTION,
-          dirSet[dirSelect.value],
-          graph.getSelectionCells()
-        );
-        mxEvent.consume(evt);
-      });
-    }
-
-    // Font size
-    this.input = this.createFontSizeInput();
-    const { input } = this;
-    stylePanel2.appendChild(input);
-
-    // Workaround for font size 4 if no text is selected is update font size below
-    // after first character was entered (as the font element is lazy created)
-    this.inputUpdate = this.createInputHandler();
-
-    var stepper = this.createStyledStepper();
-
-    stylePanel2.appendChild(stepper);
-
-    const { panel, bgPanel, colorPanel, borderPanel } = this;
-
-    colorPanel.appendChild(panel);
-    colorPanel.appendChild(bgPanel);
-
-    if (!graph.cellEditor.isContentEditing()) {
-      colorPanel.appendChild(borderPanel);
-    }
-
-    container.appendChild(colorPanel);
-
-    this.createExtraPanel();
-    this.createSpacingSpanPanel();
-    this.appendPanelToContainer();
-    this.addKeyHandlers(input);
-    const { listener } = this;
-
-    graph.getModel().addListener(mxEvent.CHANGE, listener);
-    this.listeners.push({
-      destroy: function () {
-        graph.getModel().removeListener(listener);
-      },
-    });
-    listener();
-
-    if (graph.cellEditor.isContentEditing()) {
-      new UpdateCssHandler(this.format, this.editorUi, this.container).create();
-    }
-    return container;
   }
 
   get colorPanel() {
@@ -231,16 +98,6 @@ export class TextFormatPanel extends BaseFormatPanel {
     return this.createFontColorPanel();
   }
 
-  createBorderPanel() {
-    const borderPanel = this.createCellColorOption(
-      mxResources.get("borderColor"),
-      mxConstants.STYLE_LABEL_BORDERCOLOR,
-      "#000000"
-    );
-    borderPanel.style.fontWeight = "bold";
-    return borderPanel;
-  }
-
   // NOTE: For automatic we use the value null since automatic
   // requires the text to be non formatted and non-wrapped
   get dirSet() {
@@ -253,6 +110,42 @@ export class TextFormatPanel extends BaseFormatPanel {
 
   get dirs() {
     return ["automatic", "leftToRight", "rightToLeft"];
+  }
+
+  createToolbarFormatButtons(): any {
+    return new ToolbarFormatButtons(this.editorUi);
+  }
+
+  /**
+   * Adds the label menu items to the given menu and parent.
+   */
+  init() {
+    this.container.style.borderBottom = "none";
+    this.addFont(this.container);
+    return this;
+  }
+
+  listener = () => {
+    return new TextFormatListener().listener;
+  };
+
+  /**
+   * Adds the label menu items to the given menu and parent.
+   */
+  addFont(container) {
+    return new Font(this.format, this.editorUi, this.container).addFont(
+      container
+    );
+  }
+
+  createBorderPanel() {
+    const borderPanel = this.createCellColorOption(
+      mxResources.get("borderColor"),
+      mxConstants.STYLE_LABEL_BORDERCOLOR,
+      "#000000"
+    );
+    borderPanel.style.fontWeight = "bold";
+    return borderPanel;
   }
 
   createPositionSelect() {
@@ -610,7 +503,7 @@ export class TextFormatPanel extends BaseFormatPanel {
     return this._fontStyleItems;
   }
 
-  protected createFontStyleItems() {
+  createFontStyleItems() {
     const { stylePanel2 } = this;
     const fontStyleItems = this.editorUi.toolbar.addItems(
       ["bold", "italic", "underline"],
@@ -712,7 +605,7 @@ export class TextFormatPanel extends BaseFormatPanel {
     return this._spacingPanel;
   }
 
-  protected createContainerTitle() {
+  createContainerTitle() {
     const title = this.createTitle(mxResources.get("font"));
     title.style.paddingLeft = "18px";
     title.style.paddingTop = "10px";
@@ -720,7 +613,7 @@ export class TextFormatPanel extends BaseFormatPanel {
     return title;
   }
 
-  protected createSpacingPanel() {
+  createSpacingPanel() {
     const spacingPanel = this.createPanel();
     spacingPanel.style.paddingTop = "10px";
     spacingPanel.style.paddingBottom = "28px";
@@ -818,7 +711,7 @@ export class TextFormatPanel extends BaseFormatPanel {
     );
   }
 
-  protected createColorPanel() {
+  createColorPanel() {
     const colorPanel = this.createPanel();
     colorPanel.style.marginTop = "8px";
     colorPanel.style.borderTop = "1px solid #c0c0c0";
@@ -827,7 +720,7 @@ export class TextFormatPanel extends BaseFormatPanel {
     return colorPanel;
   }
 
-  protected createFontMenu() {
+  createFontMenu() {
     const { stylePanel } = this;
     const fontMenu = this.editorUi.toolbar.addMenu(
       "Helvetica",
@@ -914,6 +807,7 @@ export class TextFormatPanel extends BaseFormatPanel {
       stylePanel3
     );
   }
+
   get center() {
     const { callFn, graph, stylePanel3 } = this;
     return this.editorUi.toolbar.addButton(
@@ -932,6 +826,7 @@ export class TextFormatPanel extends BaseFormatPanel {
       stylePanel3
     );
   }
+
   get right() {
     const { callFn, graph, stylePanel3 } = this;
     return this.editorUi.toolbar.addButton(
