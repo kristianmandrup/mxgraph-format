@@ -1,10 +1,11 @@
-import { TextFormatPanel } from "../..";
+import { LineJumps } from "../..";
 import { editorUi as ui, format, container, editorUi } from "../mocks";
+import { StyleFormatPanel } from "../../style";
 
-describe("TextFormatPanel", () => {
+describe("LineJumps", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new TextFormatPanel(format, editorUi, container);
+    instance = new LineJumps(format, editorUi, container);
     div = document.createElement("div");
   });
 

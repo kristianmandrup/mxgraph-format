@@ -1,7 +1,7 @@
 import mx from "@mxgraph-app/mx";
 // import { Dialog } from "@mxgraph-app/dialogs";
 import { TextFormatPanel } from "../text/TextFormatPanel";
-import { OnSelectionManager } from "./selection/OnSelectionManager";
+import { SelectionManager } from "./selection/SelectionManager";
 import { NoSelectionManager } from "./no-selection/NoSelectionManager";
 import { BaseRefreshManager } from "./BaseRefreshManager";
 const { mxClient, mxEvent } = mx;
@@ -58,7 +58,7 @@ export class FormatRefresher extends BaseRefreshManager {
   }
 
   onSelection() {
-    new OnSelectionManager(
+    new SelectionManager(
       this.format,
       this.editorUi,
       this.container

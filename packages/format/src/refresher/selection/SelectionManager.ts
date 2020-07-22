@@ -5,7 +5,7 @@ import { ArrangePanel } from "../../arrange";
 import mx from "@mxgraph-app/mx";
 const { mxEvent, mxClient } = mx;
 
-export class OnSelectionManager extends BaseRefreshManager {
+export class SelectionManager extends BaseRefreshManager {
   currentLabel: any;
   currentPanel: any;
 

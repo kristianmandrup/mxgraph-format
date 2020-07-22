@@ -1,1 +1,1 @@
-export * from "./OnSelectionManager";
+export * from "./SelectionManager";

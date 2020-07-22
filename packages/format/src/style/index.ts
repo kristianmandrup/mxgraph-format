@@ -2,3 +2,8 @@ export * from "./BaseStyleFormat";
 export * from "./stroke";
 export * from "./StyleFormatPanel";
 export * from "./Fill";
+export * from "./Effects";
+export * from "./Initializer";
+export * from "./LineJumps";
+export * from "./EditOps";
+export * from "./StyleOps";

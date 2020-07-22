@@ -1,10 +1,10 @@
-import { TextFormatPanel } from "../..";
-import { editorUi as ui, format, container, editorUi } from "../mocks";
+import { ToolbarFormatButtons } from "../../../text";
+import { editorUi as ui, format, container, editorUi } from "../../mocks";
 
-describe("TextFormatPanel", () => {
+describe("ToolbarFormatButtons", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new TextFormatPanel(format, editorUi, container);
+    instance = new ToolbarFormatButtons(editorUi);
     div = document.createElement("div");
   });
 
