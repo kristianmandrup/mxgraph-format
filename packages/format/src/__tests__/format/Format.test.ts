@@ -1,10 +1,10 @@
-import { ExtraPanel } from "../../../text";
-import { editorUi as ui, format, container, editorUi } from "../../mocks";
+import { Format } from "../../format";
+import { editorUi as ui, format, container, editorUi } from "../mocks";
 
-describe("ExtraPanel", () => {
+describe("Format", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new ExtraPanel(format, editorUi, container);
+    instance = new Format(editorUi, container);
     div = document.createElement("div");
   });
 

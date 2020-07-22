@@ -1,7 +1,7 @@
 import mx from "@mxgraph-app/mx";
 import { Unit } from "./Unit";
 import { roundableShapes } from "./shapes";
-import { SelectionStateUpdater } from "./selection-state/SelectionState";
+import { SelectionStateUpdater } from "./selection-state/SelectionStateUpdater";
 const { mxEvent } = mx;
 
 /**

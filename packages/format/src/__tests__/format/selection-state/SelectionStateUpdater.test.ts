@@ -1,10 +1,10 @@
-import { ExtraPanel } from "../../../text";
+import { SelectionStateUpdater } from "../../..";
 import { editorUi as ui, format, container, editorUi } from "../../mocks";
 
-describe("ExtraPanel", () => {
+describe("SelectionStateUpdater", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new ExtraPanel(format, editorUi, container);
+    instance = new SelectionStateUpdater(format, editorUi, container);
     div = document.createElement("div");
   });
 

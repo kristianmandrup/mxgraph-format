@@ -1,10 +1,10 @@
-import { ExtraPanel } from "../../../text";
+import { StateChecker } from "../../../";
 import { editorUi as ui, format, container, editorUi } from "../../mocks";
 
-describe("ExtraPanel", () => {
+describe("StateChecker", () => {
   let instance, div;
   beforeEach(() => {
-    instance = new ExtraPanel(format, editorUi, container);
+    instance = new StateChecker(format, editorUi, container);
     div = document.createElement("div");
   });
 
