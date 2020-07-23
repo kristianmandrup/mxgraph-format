@@ -5,6 +5,20 @@ import { UpdateCssHandler } from "../handler";
 const { mxConstants, mxClient, mxResources, mxEvent, mxUtils } = mx;
 
 export class Font extends TextFormatPanel {
+  // NOTE: For automatic we use the value null since automatic
+  // requires the text to be non formatted and non-wrapped
+  get dirSet() {
+    return {
+      automatic: null,
+      leftToRight: mxConstants.TEXT_DIRECTION_LTR,
+      rightToLeft: mxConstants.TEXT_DIRECTION_RTL,
+    };
+  }
+
+  get dirs() {
+    return ["automatic", "leftToRight", "rightToLeft"];
+  }
+
   /**
    * Adds the label menu items to the given menu and parent.
    */

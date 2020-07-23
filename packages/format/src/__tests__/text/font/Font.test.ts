@@ -15,6 +15,18 @@ describe("Font", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      describe("dirSet", () => {
+        it("is set", () => {
+          expect(instance.dirSet).toBeDefined();
+        });
+      });
+
+      describe("dirs", () => {
+        it("is set", () => {
+          expect(instance.dirs).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {

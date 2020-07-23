@@ -28,8 +28,8 @@ const defaults = {
  */
 export class TextFormatPanel extends BaseFormatPanel {
   ctrlKey: any; // Editor.ctrlKey
-  selection: any; // document.selection
-  documentMode: any; // document.documentMode
+  // selection: any; // document.selection
+  // documentMode: any; // document.documentMode
   panelMap = defaults.panelMap;
 
   protected _spacingPanel: any;
@@ -67,6 +67,18 @@ export class TextFormatPanel extends BaseFormatPanel {
     return this.editor.graph;
   }
 
+  get toolbar() {
+    return this.editorUi.toolbar;
+  }
+
+  get menus() {
+    return this.editorUi.menus;
+  }
+
+  get cellEditor() {
+    return this.graph.cellEditor;
+  }
+
   get ss() {
     return this.format.getSelectionState();
   }
@@ -98,18 +110,63 @@ export class TextFormatPanel extends BaseFormatPanel {
     return this.createFontColorPanel();
   }
 
-  // NOTE: For automatic we use the value null since automatic
-  // requires the text to be non formatted and non-wrapped
-  get dirSet() {
-    return {
-      automatic: null,
-      leftToRight: mxConstants.TEXT_DIRECTION_LTR,
-      rightToLeft: mxConstants.TEXT_DIRECTION_RTL,
-    };
+  get top() {
+    const { callFn, stylePanel3, resource, toolbar, menus } = this;
+    return toolbar.addButton(
+      "geSprite-top",
+      resource("top"),
+      callFn(
+        menus.createStyleChangeFunction(
+          [mxConstants.STYLE_VERTICAL_ALIGN],
+          [mxConstants.ALIGN_TOP]
+        )
+      ),
+      stylePanel3
+    );
   }
 
-  get dirs() {
-    return ["automatic", "leftToRight", "rightToLeft"];
+  get middle() {
+    const { callFn, stylePanel3, resource, toolbar, menus } = this;
+    return toolbar.addButton(
+      "geSprite-middle",
+      resource("middle"),
+      callFn(
+        menus.createStyleChangeFunction(
+          [mxConstants.STYLE_VERTICAL_ALIGN],
+          [mxConstants.ALIGN_MIDDLE]
+        )
+      ),
+      stylePanel3
+    );
+  }
+
+  get bottom() {
+    const { callFn, stylePanel3, toolbar, menus } = this;
+    return toolbar.addButton(
+      "geSprite-bottom",
+      mxResources.get("bottom"),
+      callFn(
+        menus.createStyleChangeFunction(
+          [mxConstants.STYLE_VERTICAL_ALIGN],
+          [mxConstants.ALIGN_BOTTOM]
+        )
+      ),
+      stylePanel3
+    );
+  }
+
+  get directions() {
+    return [
+      "topLeft",
+      "top",
+      "topRight",
+      "left",
+      "center",
+      "right",
+      "bottomLeft",
+      "bottom",
+      "bottomRight",
+    ];
   }
 
   createToolbarFormatButtons(): any {
@@ -149,19 +206,19 @@ export class TextFormatPanel extends BaseFormatPanel {
   }
 
   createPositionSelect() {
-    const { directions } = this;
+    const { directions, resource } = this;
     const positionSelect = document.createElement("select");
     positionSelect.style.position = "absolute";
     positionSelect.style.right = "20px";
     positionSelect.style.width = "97px";
     positionSelect.style.marginTop = "-2px";
 
-    for (var i = 0; i < directions.length; i++) {
+    directions.map((direction) => {
       var positionOption = document.createElement("option");
-      positionOption.setAttribute("value", directions[i]);
-      mxUtils.write(positionOption, mxResources.get(directions[i]));
+      positionOption.setAttribute("value", direction);
+      mxUtils.write(positionOption, resource(direction));
       positionSelect.appendChild(positionOption);
-    }
+    });
     return positionSelect;
   }
 
@@ -217,86 +274,26 @@ export class TextFormatPanel extends BaseFormatPanel {
     container.appendChild(stylePanel3);
   }
 
-  get top() {
-    const { callFn, stylePanel3 } = this;
-    return this.editorUi.toolbar.addButton(
-      "geSprite-top",
-      mxResources.get("top"),
-      callFn(
-        this.editorUi.menus.createStyleChangeFunction(
-          [mxConstants.STYLE_VERTICAL_ALIGN],
-          [mxConstants.ALIGN_TOP]
-        )
-      ),
-      stylePanel3
-    );
-  }
-
-  get middle() {
-    const { callFn, stylePanel3 } = this;
-    return this.editorUi.toolbar.addButton(
-      "geSprite-middle",
-      mxResources.get("middle"),
-      callFn(
-        this.editorUi.menus.createStyleChangeFunction(
-          [mxConstants.STYLE_VERTICAL_ALIGN],
-          [mxConstants.ALIGN_MIDDLE]
-        )
-      ),
-      stylePanel3
-    );
-  }
-
-  get bottom() {
-    const { callFn, stylePanel3 } = this;
-    return this.editorUi.toolbar.addButton(
-      "geSprite-bottom",
-      mxResources.get("bottom"),
-      callFn(
-        this.editorUi.menus.createStyleChangeFunction(
-          [mxConstants.STYLE_VERTICAL_ALIGN],
-          [mxConstants.ALIGN_BOTTOM]
-        )
-      ),
-      stylePanel3
-    );
-  }
-
-  get directions() {
-    return [
-      "topLeft",
-      "top",
-      "topRight",
-      "left",
-      "center",
-      "right",
-      "bottomLeft",
-      "bottom",
-      "bottomRight",
-    ];
-  }
-
   createSpacingSpanPanel() {
     var span = this.createSpan();
-    mxUtils.write(span, mxResources.get("spacing"));
-    const { spacingPanel } = this;
+    const { spacingPanel, resource } = this;
+    mxUtils.write(span, resource("spacing"));
     spacingPanel.appendChild(span);
 
     mxUtils.br(spacingPanel);
-    this.addLabel(spacingPanel, mxResources.get("top"), 91);
-    this.addLabel(spacingPanel, mxResources.get("global"), 20);
+    this.addLabel(spacingPanel, resource("top"), 91);
+    this.addLabel(spacingPanel, resource("global"), 20);
     mxUtils.br(spacingPanel);
     mxUtils.br(spacingPanel);
 
     mxUtils.br(spacingPanel);
-    this.addLabel(spacingPanel, mxResources.get("left"), 162);
-    this.addLabel(spacingPanel, mxResources.get("bottom"), 91);
-    this.addLabel(spacingPanel, mxResources.get("right"), 20);
+    this.addLabel(spacingPanel, resource("left"), 162);
+    this.addLabel(spacingPanel, resource("bottom"), 91);
+    this.addLabel(spacingPanel, resource("right"), 20);
   }
 
   updateUiOnCurrentTextSelection() {
     const {
-      graph,
       top,
       middle,
       bottom,
@@ -305,9 +302,10 @@ export class TextFormatPanel extends BaseFormatPanel {
       container,
       fontStyleItems,
       right,
+      cellEditor,
     } = this;
     var sub;
-    if (graph.cellEditor.isContentEditing()) {
+    if (cellEditor.isContentEditing()) {
       top.style.display = "none";
       middle.style.display = "none";
       bottom.style.display = "none";
@@ -335,11 +333,11 @@ export class TextFormatPanel extends BaseFormatPanel {
   }
 
   addStrikeThrough() {
-    const { graph, stylePanel2 } = this;
+    const { graph, stylePanel2, toolbar, resource } = this;
     if (graph.cellEditor.isContentEditing()) {
-      var strike = this.editorUi.toolbar.addButton(
+      var strike = toolbar.addButton(
         "geSprite-removeformat",
-        mxResources.get("strikethrough"),
+        resource("strikethrough"),
         function () {
           document.execCommand("strikeThrough", false);
         },
@@ -399,9 +397,9 @@ export class TextFormatPanel extends BaseFormatPanel {
     if (mxClient.IS_QUIRKS) {
       stylePanel.style.display = "block";
     }
-    const { container, graph } = this;
+    const { container, cellEditor } = this;
 
-    if (graph.cellEditor.isContentEditing()) {
+    if (cellEditor.isContentEditing()) {
       this.cssPanel = stylePanel.cloneNode();
       this.cssMenu = this.createCssMenu();
       const { cssMenu, cssPanel } = this;
@@ -414,20 +412,20 @@ export class TextFormatPanel extends BaseFormatPanel {
   }
 
   styleToolbarButtons() {
-    const { full, stylePanel3 } = this;
+    const { full, stylePanel3, toolbar, ctrlKey } = this;
     this.styleButtons([
       full,
-      this.editorUi.toolbar.addButton(
+      toolbar.addButton(
         "geSprite-subscript",
-        mxResources.get("subscript") + " (" + this.ctrlKey + "+,)",
+        mxResources.get("subscript") + " (" + ctrlKey + "+,)",
         function () {
           document.execCommand("subscript", false);
         },
         stylePanel3
       ),
-      this.editorUi.toolbar.addButton(
+      toolbar.addButton(
         "geSprite-superscript",
-        mxResources.get("superscript") + " (" + this.ctrlKey + "+.)",
+        mxResources.get("superscript") + " (" + ctrlKey + "+.)",
         function () {
           document.execCommand("superscript", false);
         },
@@ -809,16 +807,16 @@ export class TextFormatPanel extends BaseFormatPanel {
   }
 
   get center() {
-    const { callFn, graph, stylePanel3 } = this;
-    return this.editorUi.toolbar.addButton(
+    const { callFn, stylePanel3, toolbar, menus, cellEditor, resource } = this;
+    return toolbar.addButton(
       "geSprite-center",
-      mxResources.get("center"),
-      graph.cellEditor.isContentEditing()
+      resource("center"),
+      cellEditor.isContentEditing()
         ? function (evt) {
-            graph.cellEditor.alignText(mxConstants.ALIGN_CENTER, evt);
+            cellEditor.alignText(mxConstants.ALIGN_CENTER, evt);
           }
         : callFn(
-            this.editorUi.menus.createStyleChangeFunction(
+            menus.createStyleChangeFunction(
               [mxConstants.STYLE_ALIGN],
               [mxConstants.ALIGN_CENTER]
             )
@@ -828,16 +826,16 @@ export class TextFormatPanel extends BaseFormatPanel {
   }
 
   get right() {
-    const { callFn, graph, stylePanel3 } = this;
-    return this.editorUi.toolbar.addButton(
+    const { callFn, stylePanel3, cellEditor, toolbar, menus, resource } = this;
+    return toolbar.addButton(
       "geSprite-right",
-      mxResources.get("right"),
-      graph.cellEditor.isContentEditing()
+      resource("right"),
+      cellEditor.isContentEditing()
         ? function (evt) {
-            graph.cellEditor.alignText(mxConstants.ALIGN_RIGHT, evt);
+            cellEditor.alignText(mxConstants.ALIGN_RIGHT, evt);
           }
         : callFn(
-            this.editorUi.menus.createStyleChangeFunction(
+            menus.createStyleChangeFunction(
               [mxConstants.STYLE_ALIGN],
               [mxConstants.ALIGN_RIGHT]
             )
