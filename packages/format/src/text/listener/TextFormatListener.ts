@@ -33,21 +33,35 @@ export class TextFormatListener {
   }
 
   listener = (_sender?, _evt?, force?) => {
-    const {
-      positionSelect,
-      input,
+    const { setFontStyle, setStyle, setAlignPos, setSpacing } = this;
+    setFontStyle();
+    setStyle(force);
+    setAlignPos();
+    setSpacing(force);
+  };
+
+  setStyle(force) {
+    const { input, verticalItem, ss, setSelected } = this;
+
+    setSelected(
       verticalItem,
-      fontMenu,
-      ss,
-      setSelected,
-      fontStyleItems,
-      left,
-      center,
-      right,
-      top,
-      middle,
-      bottom,
-    } = this;
+      mxUtils.getValue(ss.style, mxConstants.STYLE_HORIZONTAL, "1") == "0"
+    );
+
+    if (force || document.activeElement != input) {
+      var tmp = parseFloat(
+        mxUtils.getValue(
+          ss.style,
+          mxConstants.STYLE_FONTSIZE,
+          this.defaultFontSize
+        )
+      );
+      input.value = isNaN(tmp) ? "" : tmp + " pt";
+    }
+  }
+
+  setFontStyle() {
+    const { fontMenu, ss, setSelected, fontStyleItems } = this;
 
     var fontStyle = mxUtils.getValue(ss.style, mxConstants.STYLE_FONTSTYLE, 0);
     setSelected(
@@ -67,22 +81,20 @@ export class TextFormatListener {
       mxConstants.STYLE_FONTFAMILY,
       this.defaultFont
     );
+  }
 
-    setSelected(
-      verticalItem,
-      mxUtils.getValue(ss.style, mxConstants.STYLE_HORIZONTAL, "1") == "0"
-    );
-
-    if (force || document.activeElement != input) {
-      var tmp = parseFloat(
-        mxUtils.getValue(
-          ss.style,
-          mxConstants.STYLE_FONTSIZE,
-          this.defaultFontSize
-        )
-      );
-      input.value = isNaN(tmp) ? "" : tmp + " pt";
-    }
+  setAlignPos() {
+    const {
+      positionSelect,
+      ss,
+      setSelected,
+      left,
+      center,
+      right,
+      top,
+      middle,
+      bottom,
+    } = this;
 
     var align = mxUtils.getValue(
       ss.style,
@@ -147,7 +159,10 @@ export class TextFormatListener {
     } else {
       positionSelect.value = "center";
     }
+  }
 
+  setSpacing(force) {
+    const { ss } = this;
     var dir = mxUtils.getValue(
       ss.style,
       mxConstants.STYLE_TEXT_DIRECTION,
@@ -205,5 +220,5 @@ export class TextFormatListener {
       );
       leftSpacing.value = isNaN(tmp) ? "" : tmp + " pt";
     }
-  };
+  }
 }

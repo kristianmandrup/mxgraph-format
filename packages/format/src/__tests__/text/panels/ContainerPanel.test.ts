@@ -23,15 +23,37 @@ describe("ContainerPanel", () => {
           expect(instance.createToolbarFormatButtons()).toBeDefined();
         });
       });
+
+      // REFACTOR
+      describe("append()", () => {
+        it("appends", () => {
+          expect(instance.append()).toBeDefined();
+        });
+      });
+
+      describe("addBtns()", () => {
+        it("adds", () => {
+          expect(instance.addBtns()).toBeDefined();
+        });
+      });
+
+      describe("addBtns1()", () => {
+        it("adds", () => {
+          expect(instance.addBtns1()).toBeDefined();
+        });
+      });
+
+      describe("addBtns2()", () => {
+        it("adds", () => {
+          expect(instance.addBtns2()).toBeDefined();
+        });
+      });
+
+      describe("addBtns3()", () => {
+        it("adds", () => {
+          expect(instance.addBtns3()).toBeDefined();
+        });
+      });
     });
-    //
-
-    // REFACTOR
-    // append()
-
-    // addBtns()
-    // addBtns1()
-    // addBtns2()
-    // addBtns3()
   });
 });

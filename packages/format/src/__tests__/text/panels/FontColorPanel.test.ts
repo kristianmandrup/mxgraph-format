@@ -16,8 +16,17 @@ describe("FontColorPanel", () => {
         });
       });
 
-      // editFontColorOption
-      // fontColorOption
+      describe("editFontColorOption", () => {
+        it("is set", () => {
+          expect(instance.editFontColorOption).toBeDefined();
+        });
+      });
+
+      describe("fontColorOption", () => {
+        it("is set", () => {
+          expect(instance.fontColorOption).toBeDefined();
+        });
+      });
     });
   });
 

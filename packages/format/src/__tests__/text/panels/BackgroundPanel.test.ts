@@ -16,8 +16,17 @@ describe("BackgroundPanel", () => {
         });
       });
 
-      // currentBgColor: any;
-      // bgColorApply: any;
+      describe("currentBgColor", () => {
+        it("is set", () => {
+          expect(instance.currentBgColor).toBeDefined();
+        });
+      });
+
+      describe("bgColorApply", () => {
+        it("is set", () => {
+          expect(instance.bgColorApply).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {
