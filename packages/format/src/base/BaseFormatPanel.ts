@@ -54,6 +54,18 @@ export class BaseFormatPanel extends Base {
     return this.editorUi.editor;
   }
 
+  get cellEditor() {
+    return this.editor.cellEditor;
+  }
+
+  get menus() {
+    return this.editor.menus;
+  }
+
+  get toolbar() {
+    return this.editor.toolbar;
+  }
+
   get actions() {
     return this.editor.actions;
   }

@@ -1,5 +1,5 @@
-import { FontColorPanel } from "../../../text";
-import { editorUi as ui, format, container, editorUi } from "../../mocks";
+import { FontColorPanel } from "../../../../text";
+import { editorUi as ui, format, container, editorUi } from "../../../mocks";
 
 describe("FontColorPanel", () => {
   let instance, div;
@@ -34,6 +34,25 @@ describe("FontColorPanel", () => {
     describe("create()", () => {
       it("creates instance", () => {
         expect(instance.create()).toBeDefined();
+      });
+    });
+
+    describe("getColor()", () => {
+      it("get current color", () => {
+        expect(instance.getColor()).toBeDefined();
+      });
+    });
+
+    describe("createColorUpdater()", () => {
+      it("creates instance", () => {
+        expect(instance.createColorUpdater()).toBeDefined();
+      });
+    });
+
+    describe("setColor(color)", () => {
+      it("sets current color", () => {
+        const color = "black";
+        expect(instance.setColor(color)).toBeDefined();
       });
     });
   });
