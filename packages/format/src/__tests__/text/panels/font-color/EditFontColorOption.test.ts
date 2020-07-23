@@ -21,6 +21,33 @@ describe("FontColorPanel", () => {
           expect(instance.initialColor).toBeDefined();
         });
       });
+
+      describe("editFontColorOption", () => {
+        it("is set", () => {
+          expect(instance.editFontColorOption).toBeDefined();
+        });
+      });
+    });
+
+    describe("methods", () => {
+      describe("getColor()", () => {
+        it("get current color", () => {
+          expect(instance.getColor()).toBeDefined();
+        });
+      });
+
+      describe("createColorUpdater()", () => {
+        it("creates instance", () => {
+          expect(instance.createColorUpdater()).toBeDefined();
+        });
+      });
+
+      describe("setColor(color)", () => {
+        it("sets current color", () => {
+          const color = "black";
+          expect(instance.setColor(color)).toBeDefined();
+        });
+      });
     });
   });
 });

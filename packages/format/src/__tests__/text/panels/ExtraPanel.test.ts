@@ -23,6 +23,24 @@ describe("ExtraPanel", () => {
           expect(instance.create()).toBeDefined();
         });
       });
+
+      describe("createExtraPanel()", () => {
+        it("creates panel", () => {
+          expect(instance.createExtraPanel()).toBeDefined();
+        });
+      });
+
+      describe("appendWwOpt()", () => {
+        it("appends ww opt", () => {
+          expect(instance.appendWwOpt()).toBeDefined();
+        });
+      });
+
+      describe("appendHtmlOpt()", () => {
+        it("appends html opt", () => {
+          expect(instance.appendHtmlOpt()).toBeDefined();
+        });
+      });
     });
   });
 });

@@ -3,18 +3,27 @@ import mx from "@mxgraph-app/mx";
 const { mxConstants, mxClient } = mx;
 
 export class ColorUpdater extends BaseFormatPanel {
+  color: any;
+
+  set(color) {
+    this.color = color;
+    return this;
+  }
+
   update = (color) => {
+    this.set(color);
     const { onFireFox, onNormal } = this;
-    onFireFox(color) || onNormal(color);
+    onFireFox() || onNormal();
   };
 
-  onNormal = (color) => {
+  onNormal = () => {
     if (mxClient.IS_FF) return;
-    this.executeCommand(color);
+    this.executeCommand();
     return true;
   };
 
-  executeCommand(color) {
+  executeCommand() {
+    const { color } = this;
     document.execCommand(
       "forecolor",
       false,
@@ -46,9 +55,9 @@ export class ColorUpdater extends BaseFormatPanel {
     return oldFonts;
   }
 
-  onFireFox(color) {
+  onFireFox() {
     if (!mxClient.IS_FF) return;
-    const { cloneFontElements } = this;
+    const { color, cloneFontElements } = this;
 
     // Workaround for Firefox that adds the font element around
     // anchor elements which ignore inherited colors is to move

@@ -36,24 +36,5 @@ describe("FontColorPanel", () => {
         expect(instance.create()).toBeDefined();
       });
     });
-
-    describe("getColor()", () => {
-      it("get current color", () => {
-        expect(instance.getColor()).toBeDefined();
-      });
-    });
-
-    describe("createColorUpdater()", () => {
-      it("creates instance", () => {
-        expect(instance.createColorUpdater()).toBeDefined();
-      });
-    });
-
-    describe("setColor(color)", () => {
-      it("sets current color", () => {
-        const color = "black";
-        expect(instance.setColor(color)).toBeDefined();
-      });
-    });
   });
 });
