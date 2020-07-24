@@ -1,5 +1,5 @@
 import { BasicManager } from "./BasicManager";
-import mx from "../../../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 const { mxEvent } = mx;
 
 export class BasicGeometryHandler extends BasicManager {

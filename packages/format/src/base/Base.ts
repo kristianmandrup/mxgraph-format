@@ -1,4 +1,4 @@
-import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 import { UnitInput } from "./UnitInput";
 import { Unit } from "../format/Unit";
 const { mxEvent, mxUtils } = mx;

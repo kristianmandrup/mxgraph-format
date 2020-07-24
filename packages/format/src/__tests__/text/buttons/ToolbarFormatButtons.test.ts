@@ -16,18 +16,65 @@ describe("ToolbarFormatButtons", () => {
         });
       });
 
-      // editorUi: any;
-      // graph
-      // toolbar
+      describe("graph", () => {
+        it("is set", () => {
+          expect(instance.graph).toBeDefined();
+        });
+      });
 
-      // insertPanel: any;
-      // styleButtons: any;
-      // currentTable: any;
-      // tableCell: any;
-      // tablePanel: any;
-      // tablePanel2: any;
-      // tableRow: any;
-      // tmp: any;
+      describe("toolbar", () => {
+        it("is set", () => {
+          expect(instance.toolbar).toBeDefined();
+        });
+      });
+
+      describe("insertPanel", () => {
+        it("is set", () => {
+          expect(instance.insertPanel).toBeDefined();
+        });
+      });
+
+      describe("styleButtons", () => {
+        it("is set", () => {
+          expect(instance.styleButtons).toBeDefined();
+        });
+      });
+
+      describe("currentTable", () => {
+        it("is set", () => {
+          expect(instance.currentTable).toBeDefined();
+        });
+      });
+
+      describe("tableCell", () => {
+        it("is set", () => {
+          expect(instance.tableCell).toBeDefined();
+        });
+      });
+
+      describe("tablePanel", () => {
+        it("is set", () => {
+          expect(instance.tablePanel).toBeDefined();
+        });
+      });
+
+      describe("tablePanel2", () => {
+        it("is set", () => {
+          expect(instance.tablePanel2).toBeDefined();
+        });
+      });
+
+      describe("tableRow", () => {
+        it("is set", () => {
+          expect(instance.tableRow).toBeDefined();
+        });
+      });
+
+      describe("tmp", () => {
+        it("is set", () => {
+          expect(instance.tableRow).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {

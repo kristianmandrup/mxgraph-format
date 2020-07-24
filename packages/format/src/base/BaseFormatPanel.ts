@@ -1,4 +1,4 @@
-import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 import { Buttons } from "./Buttons";
 import { InputHandlerInstaller } from "./InputHandlerInstaller";
 import { Stepper } from "./Stepper";

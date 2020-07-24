@@ -1,5 +1,5 @@
 import { AbstractStrokeFormat } from "./AbstractStrokeFormat";
-import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 const { mxConstants, mxUtils } = mx;
 
 export class Listener extends AbstractStrokeFormat {

@@ -1,4 +1,4 @@
-import mx from "../handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 import { ToolbarFormatButtons } from "../buttons";
 import { BaseFormatPanel } from "../../base";
 const { mxUtils, mxClient, mxEvent, mxConstants, mxResources } = mx;

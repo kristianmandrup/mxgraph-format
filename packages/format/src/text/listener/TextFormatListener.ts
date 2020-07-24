@@ -1,4 +1,4 @@
-import mx from "../handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 const { mxConstants, mxUtils } = mx;
 
 export class TextFormatListener {

@@ -1,5 +1,5 @@
 import { FormatOption } from "./FormatOption";
-import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 const { mxEventObject, mxEvent, mxUtils } = mx;
 
 export class CellOption extends FormatOption {

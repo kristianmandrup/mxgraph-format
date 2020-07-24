@@ -1,5 +1,5 @@
 import { EdgeManager } from "./EdgeManager";
-import mx from "../../../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 const { mxResources, mxEvent, mxUtils } = mx;
 
 export class EdgeGeometryManager extends EdgeManager {

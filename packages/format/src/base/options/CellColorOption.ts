@@ -1,4 +1,4 @@
-import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
+import mx from "@mxgraph-app/mx";
 const { mxEventObject, mxConstants, mxEvent, mxUtils } = mx;
 import { ColorOption } from "./ColorOption";
 
