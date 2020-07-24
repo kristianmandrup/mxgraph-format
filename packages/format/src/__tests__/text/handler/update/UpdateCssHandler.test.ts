@@ -1,5 +1,5 @@
-import { UpdateCssHandler } from "../../../text";
-import { editorUi as ui, format, container, editorUi } from "../../mocks";
+import { UpdateCssHandler } from "../../../../text";
+import { editorUi as ui, format, container, editorUi } from "../../../mocks";
 
 describe("UpdateCssHandler", () => {
   let instance, div;

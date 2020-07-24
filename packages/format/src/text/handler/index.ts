@@ -1,2 +1,2 @@
 export * from "./InputHandler";
-export * from "./UpdateCssHandler";
+export * from "./update";
