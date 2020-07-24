@@ -22,6 +22,31 @@ describe("UpdateCssHandler", () => {
           expect(instance.fontSize).toBe(fontSize);
         });
       });
+
+      describe("container", () => {
+        it("is set", () => {
+          expect(instance.container).toBeDefined();
+        });
+      });
+
+      describe("selection", () => {
+        it("is set", () => {
+          expect(instance.selection).toBeDefined();
+        });
+      });
+
+      describe("textarea", () => {
+        it("is set", () => {
+          expect(instance.textarea).toBeDefined();
+        });
+      });
+
+      describe("pendingFontSize = val", () => {
+        it("is set", () => {
+          instance.pendingFontSize = 14;
+          expect(instance.handler.pendingFontSize).toEqual(14);
+        });
+      });
     });
 
     describe("methods", () => {
