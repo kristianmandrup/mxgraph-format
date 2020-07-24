@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 import { AbstractStrokeFormat } from "./AbstractStrokeFormat";
 const { mxResources, mxConstants } = mx;
 
@@ -16,37 +16,37 @@ export class Pattern extends AbstractStrokeFormat {
           75,
           "solid",
           [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN],
-          [null, null],
+          [null, null]
         ).setAttribute("title", mxResources.get("solid"));
         addItem(
           menu,
           75,
           "dashed",
           [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN],
-          ["1", null],
+          ["1", null]
         ).setAttribute("title", mxResources.get("dashed"));
         addItem(
           menu,
           75,
           "dotted",
           [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN],
-          ["1", "1 1"],
+          ["1", "1 1"]
         ).setAttribute("title", mxResources.get("dotted") + " (1)");
         addItem(
           menu,
           75,
           "dotted",
           [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN],
-          ["1", "1 2"],
+          ["1", "1 2"]
         ).setAttribute("title", mxResources.get("dotted") + " (2)");
         addItem(
           menu,
           75,
           "dotted",
           [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN],
-          ["1", "1 4"],
+          ["1", "1 4"]
         ).setAttribute("title", mxResources.get("dotted") + " (3)");
-      },
+      }
     );
   }
 }

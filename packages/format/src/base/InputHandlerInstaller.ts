@@ -14,7 +14,7 @@ export class InputHandlerInstaller extends Base {
     max,
     unit,
     textEditFallback?,
-    isFloat?,
+    isFloat?
   ) {
     unit = unit != null ? unit : "";
     isFloat = isFloat != null ? isFloat : false;
@@ -57,11 +57,11 @@ export class InputHandlerInstaller extends Base {
         }
       } else if (
         value !=
-          mxUtils.getValue(
-            this.format.getSelectionState().style,
-            key,
-            defaultValue,
-          )
+        mxUtils.getValue(
+          this.format.getSelectionState().style,
+          key,
+          defaultValue
+        )
       ) {
         if (graph.isEditing()) {
           graph.stopEditing(true);
@@ -94,8 +94,8 @@ export class InputHandlerInstaller extends Base {
               "values",
               [value],
               "cells",
-              cells,
-            ),
+              cells
+            )
           );
         } finally {
           graph.getModel().endUpdate();

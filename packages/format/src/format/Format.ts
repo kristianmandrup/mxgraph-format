@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
 import { Unit } from "./Unit";
 import { roundableShapes } from "./shapes";
 import { SelectionStateUpdater } from "./selection-state/SelectionStateUpdater";

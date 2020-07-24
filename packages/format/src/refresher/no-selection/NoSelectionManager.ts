@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 import { BaseRefreshManager } from "../BaseRefreshManager";
 import { DiagramFormatPanel } from "../../diagram";
 const { mxEvent } = mx;

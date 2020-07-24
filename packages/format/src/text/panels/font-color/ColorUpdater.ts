@@ -1,5 +1,5 @@
 import { BaseFormatPanel } from "packages/format/src/base";
-import mx from "@mxgraph-app/mx";
+import mx from "../../handler/style/node_modules/@mxgraph-app/mx";
 const { mxConstants, mxClient } = mx;
 
 export class ColorUpdater extends BaseFormatPanel {

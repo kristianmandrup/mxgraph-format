@@ -1,5 +1,5 @@
 import { BaseStyleFormat } from "./BaseStyleFormat";
-import mx from "@mxgraph-app/mx";
+import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxResources, mxUtils, mxEvent, mxEventObject } = mx;
 
 export class LineJumps extends BaseStyleFormat {

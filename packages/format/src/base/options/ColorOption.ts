@@ -1,5 +1,5 @@
 import { Base } from "../Base";
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxClient, mxConstants, mxEvent, mxUtils } = mx;
 
 export class ColorOption extends Base {
@@ -10,14 +10,14 @@ export class ColorOption extends Base {
     defaultColor,
     listener,
     callbackFn?,
-    hideCheckbox?,
+    hideCheckbox?
   ) {
     var div = document.createElement("div");
     div.style.padding = "6px 0px 1px 0px";
     div.style.whiteSpace = "nowrap";
     div.style.overflow = "hidden";
     div.style.width = "200px";
-    div.style.height = (mxClient.IS_QUIRKS) ? "27px" : "18px";
+    div.style.height = mxClient.IS_QUIRKS ? "27px" : "18px";
 
     var cb = document.createElement("input");
     cb.setAttribute("type", "checkbox");
@@ -38,14 +38,15 @@ export class ColorOption extends Base {
     var apply = (color, disableUpdate?, forceUpdate?) => {
       if (!applying) {
         applying = true;
-        color = (/(^#?[a-zA-Z0-9]*$)/.test(color)) ? color : defaultColor;
-        btn.innerHTML = '<div style="width:' + ((mxClient.IS_QUIRKS)
-          ? "30"
-          : "36") +
+        color = /(^#?[a-zA-Z0-9]*$)/.test(color) ? color : defaultColor;
+        btn.innerHTML =
+          '<div style="width:' +
+          (mxClient.IS_QUIRKS ? "30" : "36") +
           "px;height:12px;margin:3px;border:1px solid black;background-color:" +
           mxUtils.htmlEntities(
-            (color != null && color != mxConstants.NONE) ? color : defaultColor,
-          ) + ';"></div>';
+            color != null && color != mxConstants.NONE ? color : defaultColor
+          ) +
+          ';"></div>';
 
         // Fine-tuning in Firefox, quirks mode and IE8 standards
         if (mxClient.IS_QUIRKS || this.documentMode == 8) {
@@ -62,7 +63,7 @@ export class ColorOption extends Base {
           cb.checked = false;
         }
 
-        btn.style.display = (cb.checked || hideCheckbox) ? "" : "none";
+        btn.style.display = cb.checked || hideCheckbox ? "" : "none";
 
         if (callbackFn != null) {
           callbackFn(color);
@@ -81,15 +82,12 @@ export class ColorOption extends Base {
       }
     };
 
-    btn = mxUtils.button(
-      "",
-      (evt) => {
-        this.editorUi.pickColor(value, function (color) {
-          apply(color, null, true);
-        });
-        mxEvent.consume(evt);
-      },
-    );
+    btn = mxUtils.button("", (evt) => {
+      this.editorUi.pickColor(value, function (color) {
+        apply(color, null, true);
+      });
+      mxEvent.consume(evt);
+    });
     btn.style.position = "absolute";
     btn.style.marginTop = "-4px";
     btn.style.right = mxClient.IS_QUIRKS ? "0px" : "20px";

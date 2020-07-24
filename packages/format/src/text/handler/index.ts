@@ -1,2 +1,3 @@
 export * from "./InputHandler";
-export * from "./update";
+export * from "./style";
+export * from "./font-size";

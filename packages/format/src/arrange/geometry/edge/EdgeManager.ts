@@ -125,32 +125,32 @@ export class EdgeManager extends BaseManager {
     const { div, widthUpdate } = this;
     return this.addUnitInput(
       div,
-      this.getUnit(),
+      this.unit,
       84,
       44,
       () => {
         widthUpdate();
       },
-      this.getUnitStep(),
+      this.unitStep,
       null,
       null,
-      this.isFloatUnit()
+      this.isFloatUnit
     );
   }
   get height() {
     const { div, heightUpdate } = this;
     return this.addUnitInput(
       div,
-      this.getUnit(),
+      this.unit,
       20,
       44,
       () => {
         heightUpdate();
       },
-      this.getUnitStep(),
+      this.unitStep,
       null,
       null,
-      this.isFloatUnit()
+      this.isFloatUnit
     );
   }
 }

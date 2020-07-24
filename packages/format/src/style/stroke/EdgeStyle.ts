@@ -24,7 +24,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
               [null, null, null],
               "geIcon geSprite geSprite-straight",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("straight"));
           this.editorUi.menus
@@ -39,7 +39,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
               ["orthogonalEdgeStyle", null, null],
               "geIcon geSprite geSprite-orthogonal",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("orthogonal"));
           this.editorUi.menus
@@ -55,7 +55,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
               ["elbowEdgeStyle", null, null, null],
               "geIcon geSprite geSprite-horizontalelbow",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("simple"));
           this.editorUi.menus
@@ -71,7 +71,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
               ["elbowEdgeStyle", "vertical", null, null],
               "geIcon geSprite geSprite-verticalelbow",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("simple"));
           this.editorUi.menus
@@ -87,7 +87,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
               ["isometricEdgeStyle", null, null, null],
               "geIcon geSprite geSprite-horizontalisometric",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("isometric"));
           this.editorUi.menus
@@ -103,7 +103,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
               ["isometricEdgeStyle", "vertical", null, null],
               "geIcon geSprite geSprite-verticalisometric",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("isometric"));
 
@@ -120,7 +120,7 @@ export class EdgeStyle extends AbstractStrokeFormat {
                 ["orthogonalEdgeStyle", "1", null],
                 "geIcon geSprite geSprite-curved",
                 null,
-                true,
+                true
               )
               .setAttribute("title", mxResources.get("curved"));
           }
@@ -137,11 +137,11 @@ export class EdgeStyle extends AbstractStrokeFormat {
               ["entityRelationEdgeStyle", null, null],
               "geIcon geSprite geSprite-entity",
               null,
-              true,
+              true
             )
             .setAttribute("title", mxResources.get("entityRelation"));
         }
-      },
+      }
     );
   }
 }

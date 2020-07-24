@@ -1,5 +1,5 @@
 import { BaseStyleFormat } from "./BaseStyleFormat";
-import mx from "@mxgraph-app/mx";
+import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxEvent, mxConstants, mxResources, mxClient } = mx;
 
 export class Effects extends BaseStyleFormat {

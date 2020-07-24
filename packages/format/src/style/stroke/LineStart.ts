@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 import { AbstractStrokeFormat } from "./AbstractStrokeFormat";
 const { mxResources, mxConstants, mxUtils } = mx;
 
@@ -23,7 +23,7 @@ export class LineStart extends AbstractStrokeFormat {
             [mxConstants.NONE, 0],
             "geIcon",
             null,
-            false,
+            false
           );
           item.setAttribute("title", mxResources.get("none"));
           item.firstChild.firstChild.innerHTML =
@@ -40,7 +40,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_CLASSIC, 1],
                 "geIcon geSprite geSprite-startclassic",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("classic"));
             this.editorUi.menus.edgeStyleChange(
@@ -50,7 +50,7 @@ export class LineStart extends AbstractStrokeFormat {
               [mxConstants.ARROW_CLASSIC_THIN, 1],
               "geIcon geSprite geSprite-startclassicthin",
               null,
-              false,
+              false
             );
             this.editorUi.menus
               .edgeStyleChange(
@@ -60,7 +60,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_OPEN, 0],
                 "geIcon geSprite geSprite-startopen",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("openArrow"));
             this.editorUi.menus.edgeStyleChange(
@@ -70,7 +70,7 @@ export class LineStart extends AbstractStrokeFormat {
               [mxConstants.ARROW_OPEN_THIN, 0],
               "geIcon geSprite geSprite-startopenthin",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -79,7 +79,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["openAsync", 0],
               "geIcon geSprite geSprite-startopenasync",
               null,
-              false,
+              false
             );
             this.editorUi.menus
               .edgeStyleChange(
@@ -89,7 +89,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_BLOCK, 1],
                 "geIcon geSprite geSprite-startblock",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("block"));
             this.editorUi.menus.edgeStyleChange(
@@ -99,7 +99,7 @@ export class LineStart extends AbstractStrokeFormat {
               [mxConstants.ARROW_BLOCK_THIN, 1],
               "geIcon geSprite geSprite-startblockthin",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -108,7 +108,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["async", 1],
               "geIcon geSprite geSprite-startasync",
               null,
-              false,
+              false
             );
             this.editorUi.menus
               .edgeStyleChange(
@@ -118,7 +118,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_OVAL, 1],
                 "geIcon geSprite geSprite-startoval",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("oval"));
             this.editorUi.menus
@@ -129,7 +129,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_DIAMOND, 1],
                 "geIcon geSprite geSprite-startdiamond",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("diamond"));
             this.editorUi.menus
@@ -140,7 +140,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_DIAMOND_THIN, 1],
                 "geIcon geSprite geSprite-startthindiamond",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("diamondThin"));
             this.editorUi.menus
@@ -151,7 +151,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_CLASSIC, 0],
                 "geIcon geSprite geSprite-startclassictrans",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("classic"));
             this.editorUi.menus.edgeStyleChange(
@@ -161,7 +161,7 @@ export class LineStart extends AbstractStrokeFormat {
               [mxConstants.ARROW_CLASSIC_THIN, 0],
               "geIcon geSprite geSprite-startclassicthintrans",
               null,
-              false,
+              false
             );
             this.editorUi.menus
               .edgeStyleChange(
@@ -171,7 +171,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_BLOCK, 0],
                 "geIcon geSprite geSprite-startblocktrans",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("block"));
             this.editorUi.menus.edgeStyleChange(
@@ -181,7 +181,7 @@ export class LineStart extends AbstractStrokeFormat {
               [mxConstants.ARROW_BLOCK_THIN, 0],
               "geIcon geSprite geSprite-startblockthintrans",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -190,7 +190,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["async", 0],
               "geIcon geSprite geSprite-startasynctrans",
               null,
-              false,
+              false
             );
             this.editorUi.menus
               .edgeStyleChange(
@@ -200,7 +200,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_OVAL, 0],
                 "geIcon geSprite geSprite-startovaltrans",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("oval"));
             this.editorUi.menus
@@ -211,7 +211,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_DIAMOND, 0],
                 "geIcon geSprite geSprite-startdiamondtrans",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("diamond"));
             this.editorUi.menus
@@ -222,7 +222,7 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_DIAMOND_THIN, 0],
                 "geIcon geSprite geSprite-startthindiamondtrans",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("diamondThin"));
             this.editorUi.menus.edgeStyleChange(
@@ -232,7 +232,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["box", 0],
               "geIcon geSprite geSvgSprite geSprite-box",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -241,7 +241,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["halfCircle", 0],
               "geIcon geSprite geSvgSprite geSprite-halfCircle",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -250,7 +250,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["dash", 0],
               "geIcon geSprite geSprite-startdash",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -259,7 +259,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["cross", 0],
               "geIcon geSprite geSprite-startcross",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -268,7 +268,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["circlePlus", 0],
               "geIcon geSprite geSprite-startcircleplus",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -277,7 +277,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["circle", 1],
               "geIcon geSprite geSprite-startcircle",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -286,7 +286,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["ERone", 0],
               "geIcon geSprite geSprite-starterone",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -295,7 +295,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["ERmandOne", 0],
               "geIcon geSprite geSprite-starteronetoone",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -304,7 +304,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["ERmany", 0],
               "geIcon geSprite geSprite-startermany",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -313,7 +313,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["ERoneToMany", 0],
               "geIcon geSprite geSprite-starteronetomany",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -322,7 +322,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["ERzeroToOne", 1],
               "geIcon geSprite geSprite-starteroneopt",
               null,
-              false,
+              false
             );
             this.editorUi.menus.edgeStyleChange(
               menu,
@@ -331,7 +331,7 @@ export class LineStart extends AbstractStrokeFormat {
               ["ERzeroToMany", 1],
               "geIcon geSprite geSprite-startermanyopt",
               null,
-              false,
+              false
             );
           } else {
             this.editorUi.menus
@@ -342,12 +342,12 @@ export class LineStart extends AbstractStrokeFormat {
                 [mxConstants.ARROW_BLOCK],
                 "geIcon geSprite geSprite-startblocktrans",
                 null,
-                false,
+                false
               )
               .setAttribute("title", mxResources.get("block"));
           }
         }
-      },
+      }
     );
   }
 }

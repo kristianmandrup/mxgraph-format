@@ -24,7 +24,7 @@ export class BaseManager extends GeometryHandler {
       mxConstants.STYLE_ASPECT,
       null,
       "fixed",
-      "null",
+      "null"
     );
     opt.style.width = "100%";
     return opt;
@@ -58,11 +58,11 @@ export class BaseManager extends GeometryHandler {
 
     if (
       value !=
-        mxUtils.getValue(
-          rect.style,
-          "width",
-          mxCellRenderer.defaultShapes["flexArrow"].prototype.defaultWidth,
-        )
+      mxUtils.getValue(
+        rect.style,
+        "width",
+        mxCellRenderer.defaultShapes["flexArrow"].prototype.defaultWidth
+      )
     ) {
       graph.setCellStyles("width", value, graph.getSelectionCells());
       ui.fireEvent(
@@ -73,8 +73,8 @@ export class BaseManager extends GeometryHandler {
           "values",
           [value],
           "cells",
-          graph.getSelectionCells(),
-        ),
+          graph.getSelectionCells()
+        )
       );
     }
 

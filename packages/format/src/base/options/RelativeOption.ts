@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 import { Base } from "../Base";
 import { UnitInput } from "../UnitInput";
 const { mxEvent, mxEventObject, mxUtils } = mx;
@@ -40,8 +40,8 @@ export class RelativeOption extends Base {
               "values",
               [value],
               "cells",
-              graph.getSelectionCells(),
-            ),
+              graph.getSelectionCells()
+            )
           );
         }
 
@@ -59,7 +59,7 @@ export class RelativeOption extends Base {
       update,
       10,
       -15,
-      handler != null,
+      handler != null
     );
 
     if (key != null) {
@@ -110,7 +110,7 @@ export class RelativeOption extends Base {
     step?,
     marginTop?,
     disableFocus?,
-    isFloat?,
+    isFloat?
   ) {
     return this.newUnitInput().add(
       container,
@@ -121,7 +121,7 @@ export class RelativeOption extends Base {
       step,
       marginTop,
       disableFocus,
-      isFloat,
+      isFloat
     );
   }
 

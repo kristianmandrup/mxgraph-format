@@ -1,9 +1,9 @@
-import { CssColorUpdater } from "../../../../";
+import { FontSizeHandler } from "../../../../";
 
 describe("UpdateCssHandler", () => {
   let instance;
   beforeEach(() => {
-    instance = new CssColorUpdater();
+    instance = new FontSizeHandler();
   });
 
   describe("instance", () => {

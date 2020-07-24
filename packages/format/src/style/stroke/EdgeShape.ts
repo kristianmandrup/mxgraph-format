@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 import { AbstractStrokeFormat } from "./AbstractStrokeFormat";
 const { mxResources, mxConstants } = mx;
 
@@ -24,7 +24,7 @@ export class EdgeShape extends AbstractStrokeFormat {
             [null, null, null, null],
             "geIcon geSprite geSprite-connection",
             null,
-            true,
+            true
           )
           .setAttribute("title", mxResources.get("line"));
         this.editorUi.menus
@@ -40,7 +40,7 @@ export class EdgeShape extends AbstractStrokeFormat {
             ["link", null, null, null],
             "geIcon geSprite geSprite-linkedge",
             null,
-            true,
+            true
           )
           .setAttribute("title", mxResources.get("link"));
         this.editorUi.menus
@@ -56,7 +56,7 @@ export class EdgeShape extends AbstractStrokeFormat {
             ["flexArrow", null, null, null],
             "geIcon geSprite geSprite-arrow",
             null,
-            true,
+            true
           )
           .setAttribute("title", mxResources.get("arrow"));
         this.editorUi.menus
@@ -72,10 +72,10 @@ export class EdgeShape extends AbstractStrokeFormat {
             ["arrow", null, null, null],
             "geIcon geSprite geSprite-simplearrow",
             null,
-            true,
+            true
           )
           .setAttribute("title", mxResources.get("simpleArrow"));
-      },
+      }
     );
   }
 }

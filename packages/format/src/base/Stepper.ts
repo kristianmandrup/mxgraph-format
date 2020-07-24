@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
 import { Base } from "./Base";
 const { mxClient, mxEvent, mxUtils } = mx;
 
@@ -8,15 +8,7 @@ export class Stepper extends Base {
   /**
    *
    */
-  create(
-    input,
-    update,
-    step,
-    height,
-    disableFocus?,
-    defaultValue?,
-    isFloat?,
-  ) {
+  create(input, update, step, height, disableFocus?, defaultValue?, isFloat?) {
     step = step != null ? step : 1;
     height = height != null ? height : 8;
 
@@ -110,7 +102,7 @@ export class Stepper extends Base {
             currentSelection = null;
             mxEvent.consume(evt);
           }
-        },
+        }
       );
     }
 

@@ -1,5 +1,5 @@
 import { AbstractStrokeFormat } from "./AbstractStrokeFormat";
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxConstants, mxUtils } = mx;
 
 export class Listener extends AbstractStrokeFormat {
@@ -21,14 +21,14 @@ export class Listener extends AbstractStrokeFormat {
 
     if (force || document.activeElement != input) {
       var tmp = parseInt(
-        mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1),
+        mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1)
       );
       input.value = isNaN(tmp) ? "" : tmp + " pt";
     }
 
     if (force || document.activeElement != altInput) {
       var tmp = parseInt(
-        mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1),
+        mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1)
       );
       altInput.value = isNaN(tmp) ? "" : tmp + " pt";
     }
@@ -84,8 +84,8 @@ export class Listener extends AbstractStrokeFormat {
         mxUtils.getValue(
           ss.style,
           mxConstants.STYLE_STARTSIZE,
-          mxConstants.DEFAULT_MARKERSIZE,
-        ),
+          mxConstants.DEFAULT_MARKERSIZE
+        )
       );
       startSize.value = isNaN(tmp) ? "" : tmp + " pt";
     }
@@ -95,8 +95,8 @@ export class Listener extends AbstractStrokeFormat {
         mxUtils.getValue(
           ss.style,
           mxConstants.STYLE_SOURCE_PERIMETER_SPACING,
-          0,
-        ),
+          0
+        )
       );
       startSpacing.value = isNaN(tmp) ? "" : tmp + " pt";
     }
@@ -106,8 +106,8 @@ export class Listener extends AbstractStrokeFormat {
         mxUtils.getValue(
           ss.style,
           mxConstants.STYLE_ENDSIZE,
-          mxConstants.DEFAULT_MARKERSIZE,
-        ),
+          mxConstants.DEFAULT_MARKERSIZE
+        )
       );
       endSize.value = isNaN(tmp) ? "" : tmp + " pt";
     }
@@ -117,15 +117,15 @@ export class Listener extends AbstractStrokeFormat {
         mxUtils.getValue(
           ss.style,
           mxConstants.STYLE_TARGET_PERIMETER_SPACING,
-          0,
-        ),
+          0
+        )
       );
       endSpacing.value = isNaN(tmp) ? "" : tmp + " pt";
     }
 
     if (force || document.activeElement != perimeterSpacing) {
       var tmp = parseInt(
-        mxUtils.getValue(ss.style, mxConstants.STYLE_PERIMETER_SPACING, 0),
+        mxUtils.getValue(ss.style, mxConstants.STYLE_PERIMETER_SPACING, 0)
       );
       perimeterSpacing.value = isNaN(tmp) ? "" : tmp + " pt";
     }

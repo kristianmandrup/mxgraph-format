@@ -1,5 +1,5 @@
 import { FormatOption } from "./FormatOption";
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxEventObject, mxEvent, mxUtils } = mx;
 
 export class CellOption extends FormatOption {
@@ -14,14 +14,20 @@ export class CellOption extends FormatOption {
     disabledValue,
     fn?,
     action?,
-    stopEditing?,
+    stopEditing?
   ) {
-    enabledValue = enabledValue != null
-      ? enabledValue == "null" ? null : enabledValue
-      : "1";
-    disabledValue = disabledValue != null
-      ? disabledValue == "null" ? null : disabledValue
-      : "0";
+    enabledValue =
+      enabledValue != null
+        ? enabledValue == "null"
+          ? null
+          : enabledValue
+        : "1";
+    disabledValue =
+      disabledValue != null
+        ? disabledValue == "null"
+          ? null
+          : disabledValue
+        : "0";
 
     var ui = this.editorUi;
     var editor = ui.editor;
@@ -66,8 +72,8 @@ export class CellOption extends FormatOption {
                 "values",
                 [value],
                 "cells",
-                graph.getSelectionCells(),
-              ),
+                graph.getSelectionCells()
+              )
             );
           } finally {
             graph.getModel().endUpdate();
@@ -83,7 +89,7 @@ export class CellOption extends FormatOption {
             if (state != null) {
               apply(
                 mxUtils.getValue(state.style, key, defaultValue) !=
-                  disabledValue,
+                  disabledValue
               );
             }
           };
@@ -93,7 +99,7 @@ export class CellOption extends FormatOption {
         destroy: function () {
           graph.getModel().removeListener(this.listener);
         },
-      },
+      }
     );
   }
 }

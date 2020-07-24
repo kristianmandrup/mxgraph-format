@@ -1,5 +1,5 @@
 import { BaseFormatHandler } from "./BaseFormatHandler";
-import mx from "@mxgraph-app/mx";
+import mx from "./style/node_modules/@mxgraph-app/mx";
 const { mxConstants, mxClient, mxUtils } = mx;
 
 export class InputHandler extends BaseFormatHandler {

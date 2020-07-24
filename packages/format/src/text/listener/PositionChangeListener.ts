@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../handler/style/node_modules/@mxgraph-app/mx";
 import { BaseFormatPanel } from "../../base";
 const { mxConstants, mxEvent } = mx;
 import { lset } from "./lset";

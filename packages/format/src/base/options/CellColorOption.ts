@@ -1,15 +1,9 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxEventObject, mxConstants, mxEvent, mxUtils } = mx;
 import { ColorOption } from "./ColorOption";
 
 export class CellColorOption extends ColorOption {
-  create(
-    label,
-    colorKey,
-    defaultColor?,
-    callbackFn?,
-    setStyleFn?,
-  ) {
+  create(label, colorKey, defaultColor?, callbackFn?, setStyleFn?) {
     var ui = this.editorUi;
     var editor = ui.editor;
     var graph = editor.graph;
@@ -42,8 +36,8 @@ export class CellColorOption extends ColorOption {
               "values",
               [color],
               "cells",
-              graph.getSelectionCells(),
-            ),
+              graph.getSelectionCells()
+            )
           );
         } finally {
           graph.getModel().endUpdate();
@@ -67,7 +61,7 @@ export class CellColorOption extends ColorOption {
           graph.getModel().removeListener(this.listener);
         },
       },
-      callbackFn,
+      callbackFn
     );
   }
 }

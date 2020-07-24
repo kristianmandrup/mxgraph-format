@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxClient, mxUtils } = mx;
 import resources from "@mxgraph-app/resources";
 const { IMAGE_PATH } = resources;
@@ -29,7 +29,8 @@ export class Arrow {
 
     arrow.style.height = height + "px";
     arrow.style.borderLeft = "1px solid #a0a0a0";
-    arrow.innerHTML = '<img border="0" src="' +
+    arrow.innerHTML =
+      '<img border="0" src="' +
       (mxClient.IS_SVG
         ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHBJREFUeNpidHB2ZyAGsACxDRBPIKCuA6TwCBB/h2rABu4A8SYmKCcXiP/iUFgAxL9gCi8A8SwsirZCMQMTkmANEH9E4v+CmsaArvAdyNFI/FlQ92EoBIE+qCRIUz168DBgsU4OqhinQpgHMABAgAEALY4XLIsJ20oAAAAASUVORK5CYII="
         : IMAGE_PATH + "/dropdown.png") +

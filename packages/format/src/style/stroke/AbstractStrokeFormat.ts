@@ -1,4 +1,4 @@
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 import { BaseStyleFormat } from "../BaseStyleFormat";
 import { LineStart } from "./LineStart";
 import { LineEnd } from "./LineEnd";
@@ -7,8 +7,14 @@ import { Pattern } from "./Pattern";
 import { EdgeShape } from "./EdgeShape";
 import { EdgeStyle } from "./EdgeStyle";
 import { Listener } from "./Listener";
-const { mxResources, mxEventObject, mxConstants, mxClient, mxEvent, mxUtils } =
-  mx;
+const {
+  mxResources,
+  mxEventObject,
+  mxConstants,
+  mxClient,
+  mxEvent,
+  mxUtils,
+} = mx;
 
 export class AbstractStrokeFormat extends BaseStyleFormat {
   format: any;
@@ -88,11 +94,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
 
   get lineColor(): any {
     const { label, strokeKey } = this;
-    return this.createCellColorOption(
-      label,
-      strokeKey,
-      "#000000",
-    );
+    return this.createCellColorOption(label, strokeKey, "#000000");
   }
 
   get colorPanel() {
@@ -163,8 +165,8 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
             "values",
             values,
             "cells",
-            graph.getSelectionCells(),
-          ),
+            graph.getSelectionCells()
+          )
         );
       } finally {
         graph.getModel().endUpdate();
@@ -205,13 +207,11 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
     var value = parseInt(input.value);
     value = Math.min(999, Math.max(1, isNaN(value) ? 1 : value));
 
-    if (
-      value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1)
-    ) {
+    if (value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1)) {
       graph.setCellStyles(
         mxConstants.STYLE_STROKEWIDTH,
         value,
-        graph.getSelectionCells(),
+        graph.getSelectionCells()
       );
       ui.fireEvent(
         new mxEventObject(
@@ -221,8 +221,8 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
           "values",
           [value],
           "cells",
-          graph.getSelectionCells(),
-        ),
+          graph.getSelectionCells()
+        )
       );
     }
 
@@ -236,13 +236,11 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
     var value = parseInt(altInput.value);
     value = Math.min(999, Math.max(1, isNaN(value) ? 1 : value));
 
-    if (
-      value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1)
-    ) {
+    if (value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1)) {
       graph.setCellStyles(
         mxConstants.STYLE_STROKEWIDTH,
         value,
-        graph.getSelectionCells(),
+        graph.getSelectionCells()
       );
       ui.fireEvent(
         new mxEventObject(
@@ -252,8 +250,8 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
           "values",
           [value],
           "cells",
-          graph.getSelectionCells(),
-        ),
+          graph.getSelectionCells()
+        )
       );
     }
 
@@ -316,7 +314,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       keys,
       values,
       "geIcon",
-      null,
+      null
     );
 
     var pat = document.createElement("div");
@@ -345,8 +343,11 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
   }
 
   createLineStart() {
-    return new LineStart(this.format, this.editorUi, this.container)
-      .lineStart();
+    return new LineStart(
+      this.format,
+      this.editorUi,
+      this.container
+    ).lineStart();
   }
 
   addArrows() {
@@ -506,20 +507,20 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
   get perimeterSpacing() {
     const { perimeterPanel, perimeterUpdate } = this;
 
-    return this.addUnitInput(
-      perimeterPanel,
-      "pt",
-      20,
-      41,
-      () => {
-        perimeterUpdate;
-      },
-    );
+    return this.addUnitInput(perimeterPanel, "pt", 20, 41, () => {
+      perimeterUpdate;
+    });
   }
 
   appendToContainer() {
-    const { ss, stylePanel2, arrowPanel, perimeterPanel, container, graph } =
-      this;
+    const {
+      ss,
+      stylePanel2,
+      arrowPanel,
+      perimeterPanel,
+      container,
+      graph,
+    } = this;
     if (ss.edges.length == graph.getSelectionCount()) {
       container.appendChild(stylePanel2);
 
@@ -542,7 +543,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
     return new Listener(this.format, this.editorUi, this.container).handler(
       sender,
       evt,
-      force,
+      force
     );
   };
 
@@ -567,8 +568,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
     const { ss, solid } = this;
     if (mxUtils.getValue(ss.style, mxConstants.STYLE_DASHED, null) == "1") {
       if (
-        mxUtils.getValue(ss.style, mxConstants.STYLE_DASH_PATTERN, null) ==
-          null
+        mxUtils.getValue(ss.style, mxConstants.STYLE_DASH_PATTERN, null) == null
       ) {
         solid.style.borderBottom = "1px dashed " + this.defaultStrokeColor;
       } else {
@@ -604,15 +604,15 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
     } else if (es == "entityRelationEdgeStyle") {
       edgeStyleDiv.className = "geSprite geSprite-entity";
     } else if (es == "elbowEdgeStyle") {
-      edgeStyleDiv.className = "geSprite " +
-        (mxUtils.getValue(ss.style, mxConstants.STYLE_ELBOW, null) ==
-          "vertical"
+      edgeStyleDiv.className =
+        "geSprite " +
+        (mxUtils.getValue(ss.style, mxConstants.STYLE_ELBOW, null) == "vertical"
           ? "geSprite-verticalelbow"
           : "geSprite-horizontalelbow");
     } else if (es == "isometricEdgeStyle") {
-      edgeStyleDiv.className = "geSprite " +
-        (mxUtils.getValue(ss.style, mxConstants.STYLE_ELBOW, null) ==
-          "vertical"
+      edgeStyleDiv.className =
+        "geSprite " +
+        (mxUtils.getValue(ss.style, mxConstants.STYLE_ELBOW, null) == "vertical"
           ? "geSprite-verticalisometric"
           : "geSprite-horizontalisometric");
     } else {
@@ -639,7 +639,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       mxUtils.getValue(ss.style, mxConstants.STYLE_STARTARROW, null),
       mxUtils.getValue(ss.style, "startFill", "1"),
       lineStart,
-      "start",
+      "start"
     );
   }
 
@@ -649,7 +649,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       mxUtils.getValue(ss.style, mxConstants.STYLE_ENDARROW, null),
       mxUtils.getValue(ss.style, "endFill", "1"),
       lineEnd,
-      "end",
+      "end"
     );
   }
 
@@ -695,7 +695,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       prefix,
       ss.style.shape,
       marker,
-      fill,
+      fill
     );
 
     if (markerDiv.className == "geSprite geSprite-noarrow") {
@@ -713,8 +713,8 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
   };
 
   /**
-  * Adds the label menu items to the given menu and parent.
-  */
+   * Adds the label menu items to the given menu and parent.
+   */
 
   get startSizeUpdate() {
     const { startSize } = this;
@@ -724,7 +724,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       mxConstants.DEFAULT_MARKERSIZE,
       0,
       999,
-      " pt",
+      " pt"
     );
   }
   get startSpacingUpdate() {
@@ -735,7 +735,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       0,
       -999,
       999,
-      " pt",
+      " pt"
     );
   }
 
@@ -747,7 +747,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       mxConstants.DEFAULT_MARKERSIZE,
       0,
       999,
-      " pt",
+      " pt"
     );
   }
 
@@ -759,7 +759,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       0,
       -999,
       999,
-      " pt",
+      " pt"
     );
   }
 
@@ -771,7 +771,7 @@ export class AbstractStrokeFormat extends BaseStyleFormat {
       0,
       0,
       999,
-      " pt",
+      " pt"
     );
   };
 }

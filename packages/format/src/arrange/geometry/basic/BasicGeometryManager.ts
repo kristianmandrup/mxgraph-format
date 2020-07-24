@@ -1,5 +1,5 @@
 import { BasicManager } from "./BasicManager";
-import mx from "@mxgraph-app/mx";
+import mx from "../../../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxResources, mxUtils } = mx;
 
 export class BasicGeometryManager extends BasicManager {

@@ -1,5 +1,5 @@
 import { Base } from "../Base";
-import mx from "@mxgraph-app/mx";
+import mx from "../../text/handler/style/node_modules/@mxgraph-app/mx";
 const { mxClient, mxEvent, mxUtils } = mx;
 
 export class FormatOption extends Base {
