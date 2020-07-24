@@ -16,10 +16,29 @@ describe("InputHandler", () => {
         });
       });
 
-      // input: any;
-      // installInputHandler: any;
-      // defaultFontSize: any;
-      // pendingFontSize: any;
+      describe("input", () => {
+        it("is set", () => {
+          expect(instance.input).toBeDefined();
+        });
+      });
+
+      describe("installInputHandler", () => {
+        it("is set", () => {
+          expect(instance.installInputHandler).toBeDefined();
+        });
+      });
+
+      describe("defaultFontSize", () => {
+        it("is set", () => {
+          expect(instance.defaultFontSize).toBeDefined();
+        });
+      });
+
+      describe("pendingFontSize", () => {
+        it("is set", () => {
+          expect(instance.pendingFontSize).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {

@@ -64,6 +64,7 @@ export class UpdateCssHandler extends BaseFormatHandler {
     }
   }
 
+  // TODO: REFACTOR
   updateCssHandler = () => {
     const { graph, setSelected, fontStyleItems, sup, sub, ss } = this;
     const { full, left, center, right } = this;

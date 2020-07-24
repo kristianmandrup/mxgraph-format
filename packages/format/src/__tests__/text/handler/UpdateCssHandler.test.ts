@@ -16,34 +16,139 @@ describe("UpdateCssHandler", () => {
         });
       });
 
-      // setSelected: any;
-      // fontStyleItems: any;
-      // sup: any;
-      // sub: any;
+      describe("setSelected", () => {
+        it("is set", () => {
+          expect(instance.setSelected).toBeDefined();
+        });
+      });
 
-      // full: any;
-      // left: any;
-      // center: any;
-      // right: any;
+      describe("fontStyleItems", () => {
+        it("is set", () => {
+          expect(instance.fontStyleItems).toBeDefined();
+        });
+      });
 
-      // currentTable: any;
-      // tableRow: any;
-      // tableCell: any;
-      // tableWrapper: any;
-      // pendingFontSize: any;
-      // input: any;
-      // lineHeightInput: any;
-      // fontMenu: any;
-      // currentFontColor: any;
-      // fontColorApply: any;
-      // currentBgColor: any;
-      // bgColorApply: any;
+      describe("sup", () => {
+        it("is set", () => {
+          expect(instance.sup).toBeDefined();
+        });
+      });
+
+      describe("sub", () => {
+        it("is set", () => {
+          expect(instance.sub).toBeDefined();
+        });
+      });
+
+      describe("full", () => {
+        it("is set", () => {
+          expect(instance.full).toBeDefined();
+        });
+      });
+
+      describe("left", () => {
+        it("is set", () => {
+          expect(instance.left).toBeDefined();
+        });
+      });
+
+      describe("center", () => {
+        it("is set", () => {
+          expect(instance.center).toBeDefined();
+        });
+      });
+
+      describe("right", () => {
+        it("is set", () => {
+          expect(instance.right).toBeDefined();
+        });
+      });
+
+      describe("right", () => {
+        it("is set", () => {
+          expect(instance.right).toBeDefined();
+        });
+      });
+      describe("currentTable", () => {
+        it("is set", () => {
+          expect(instance.currentTable).toBeDefined();
+        });
+      });
+      describe("tableRow", () => {
+        it("is set", () => {
+          expect(instance.tableRow).toBeDefined();
+        });
+      });
+      describe("tableCell", () => {
+        it("is set", () => {
+          expect(instance.tableCell).toBeDefined();
+        });
+      });
+      describe("tableWrapper", () => {
+        it("is set", () => {
+          expect(instance.tableWrapper).toBeDefined();
+        });
+      });
+      describe("pendingFontSize", () => {
+        it("is set", () => {
+          expect(instance.pendingFontSize).toBeDefined();
+        });
+      });
+
+      describe("input", () => {
+        it("is set", () => {
+          expect(instance.input).toBeDefined();
+        });
+      });
+
+      describe("lineHeightInput", () => {
+        it("is set", () => {
+          expect(instance.lineHeightInput).toBeDefined();
+        });
+      });
+
+      describe("fontMenu", () => {
+        it("is set", () => {
+          expect(instance.fontMenu).toBeDefined();
+        });
+      });
+
+      describe("currentFontColor", () => {
+        it("is set", () => {
+          expect(instance.currentFontColor).toBeDefined();
+        });
+      });
+
+      describe("fontColorApply", () => {
+        it("is set", () => {
+          expect(instance.fontColorApply).toBeDefined();
+        });
+      });
+
+      describe("currentBgColor", () => {
+        it("is set", () => {
+          expect(instance.currentBgColor).toBeDefined();
+        });
+      });
+
+      describe("bgColorApply", () => {
+        it("is set", () => {
+          expect(instance.bgColorApply).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {
       describe("create()", () => {
         it("creates update css handler", () => {
           expect(instance.create()).toBeDefined();
+        });
+      });
+
+      // TODO: REFACTOR
+      describe("updateCssHandler()", () => {
+        it("update css handler", () => {
+          expect(instance.updateCssHandler()).toBeDefined();
         });
       });
     });

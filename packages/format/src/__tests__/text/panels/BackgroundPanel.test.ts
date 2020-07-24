@@ -27,12 +27,45 @@ describe("BackgroundPanel", () => {
           expect(instance.bgColorApply).toBeDefined();
         });
       });
+
+      describe("isContentEditing", () => {
+        it("is false", () => {
+          expect(instance.isContentEditing).toBeFalsy();
+        });
+      });
     });
 
     describe("methods", () => {
       describe("create()", () => {
         it("creates background panel", () => {
           expect(instance.create()).toBeDefined();
+        });
+      });
+
+      describe("createPanel()", () => {
+        it("creates background panel", () => {
+          const panel = instance.createPanel();
+          expect(panel).toBeDefined();
+          expect(instance.bgPanel).toBeDefined();
+        });
+      });
+
+      describe("stylePanel()", () => {
+        it("styles background panel", () => {
+          instance.createPanel();
+          expect(instance.stylePanel()).toBeDefined();
+        });
+      });
+
+      describe("editingCellColorOption()", () => {
+        it("creates panel for editing cell color option", () => {
+          expect(instance.editingCellColorOption()).toBeDefined();
+        });
+      });
+
+      describe("nonEditingCellColorOption()", () => {
+        it("creates panel for non-editing cell color option", () => {
+          expect(instance.nonEditingCellColorOption()).toBeDefined();
         });
       });
     });
