@@ -2,10 +2,9 @@ import { DiagramFormatPanel } from "../..";
 import { editorUi as ui, format, container, editorUi } from "../mocks";
 
 describe("DiagramFormatPanel", () => {
-  let instance, div;
+  let instance;
   beforeEach(() => {
     instance = new DiagramFormatPanel(format, editorUi, container);
-    div = document.createElement("div");
   });
 
   describe("instance", () => {
@@ -13,6 +12,12 @@ describe("DiagramFormatPanel", () => {
       describe("editorUi", () => {
         it("is set", () => {
           expect(instance.editorUi).toBe(ui);
+        });
+      });
+
+      describe("gridEnabledListener", () => {
+        it("is set", () => {
+          expect(instance.gridEnabledListener).toBe(ui);
         });
       });
     });

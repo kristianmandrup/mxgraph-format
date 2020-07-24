@@ -9,20 +9,20 @@ const { mxResources } = mx;
 // const { IMAGE_PATH } = resources
 
 export class DiagramFormatPanel extends BaseFormatPanel {
-  graph: any;
+  // graph: any;
   editorUi: any;
   gridEnabledListener: any;
-  input: any;
-  fPanel: any;
-  getUnit: any;
-  inUnit: any;
-  createStepper: any;
-  createColorOption: any;
-  getUnitStep: any;
-  isFloatUnit: any;
-  listeners: any[] = [];
-  addKeyHandler: any;
-  format: any;
+  // input: any;
+  // fPanel: any;
+  // getUnit: any;
+  // inUnit: any;
+  // createStepper: any;
+  // createColorOption: any;
+  // getUnitStep: any;
+  // isFloatUnit: any;
+  // listeners: any[] = [];
+  // addKeyHandler: any;
+  // format: any;
   container: any;
 
   constructor(format, editorUi, container) {
