@@ -15,5 +15,13 @@ describe("Buttons4", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("add()", () => {
+        it("adds buttons", () => {
+          expect(instance.add()).toBeDefined();
+        });
+      });
+    });
   });
 });

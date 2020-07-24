@@ -25,7 +25,7 @@ describe("StateChecker", () => {
         });
       });
 
-      describe("isFillState(state)", () => {
+      describe("isGlassState(state)", () => {
         it("is false", () => {
           const state = {};
           expect(instance.isGlassState(state)).toBeFalsy();
