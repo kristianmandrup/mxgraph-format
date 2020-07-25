@@ -16,5 +16,13 @@ describe("SelectionState", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("getState()", () => {
+        it("gets state", () => {
+          expect(instance.getState()).toBeDefined();
+        });
+      });
+    });
   });
 });

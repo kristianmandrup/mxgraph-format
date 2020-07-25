@@ -16,5 +16,13 @@ describe("Stepper", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("create", () => {
+        it("creates new stepper", () => {
+          expect(instance.create()).toBeDefined();
+        });
+      });
+    });
   });
 });

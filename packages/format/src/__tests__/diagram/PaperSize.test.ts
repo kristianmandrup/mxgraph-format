@@ -32,13 +32,26 @@ describe("PaperSize", () => {
 
       describe("createAccessor()", () => {
         it("creates instance", () => {
-          expect(instance.createAccessor()).toBeDefined();
+          instance.createAccessor();
+          expect(instance.accessor).toBeDefined();
         });
       });
 
       describe("registerAccessorHandlers()", () => {
         it("registers handlers", () => {
           expect(() => instance.registerAccessorHandlers()).not.toThrow();
+        });
+      });
+
+      describe("addWidthInputKeyHandler()", () => {
+        it("adds weight input handler", () => {
+          expect(() => instance.addWidthInputKeyHandler()).not.toThrow();
+        });
+      });
+
+      describe("addHeightInputKeyHandler()", () => {
+        it("adds height input handler", () => {
+          expect(() => instance.addHeightInputKeyHandler()).not.toThrow();
         });
       });
 

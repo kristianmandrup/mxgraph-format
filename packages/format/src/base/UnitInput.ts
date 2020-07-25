@@ -9,7 +9,7 @@ export class UnitInput extends Base {
     height,
     disableFocus?,
     defaultValue?,
-    isFloat?,
+    isFloat?
   ) {
     return this.newStepper().create(
       input,
@@ -18,11 +18,11 @@ export class UnitInput extends Base {
       height,
       disableFocus,
       defaultValue,
-      isFloat,
+      isFloat
     );
   }
 
-  protected newStepper() {
+  newStepper() {
     const { editorUi, format, container } = this;
     return new Stepper(format, editorUi, container);
   }
@@ -39,7 +39,7 @@ export class UnitInput extends Base {
     step?,
     marginTop?,
     disableFocus?,
-    isFloat?,
+    isFloat?
   ) {
     marginTop = marginTop != null ? marginTop : 0;
 
@@ -58,7 +58,7 @@ export class UnitInput extends Base {
       null,
       disableFocus,
       null,
-      isFloat,
+      isFloat
     );
     stepper.style.marginTop = marginTop - 2 + "px";
     stepper.style.right = right + "px";

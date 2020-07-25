@@ -42,17 +42,33 @@ export class PaperSize extends BaseFormatPanel {
   }
 
   registerAccessorHandlers() {
-    const { accessor, graph } = this;
-    this.addKeyHandler(accessor.widthInput, function () {
-      accessor.set(graph.pageFormat);
-    });
-    this.addKeyHandler(accessor.heightInput, function () {
-      accessor.set(graph.pageFormat);
-    });
+    const {
+      accessor,
+      graph,
+      addHeightInputKeyHandler,
+      addWidthInputKeyHandler,
+    } = this;
+
+    addWidthInputKeyHandler();
+    addHeightInputKeyHandler();
 
     this.listener = function () {
       accessor.set(graph.pageFormat);
     };
+  }
+
+  addWidthInputKeyHandler() {
+    const { accessor, graph } = this;
+    this.addKeyHandler(accessor.widthInput, function () {
+      accessor.set(graph.pageFormat);
+    });
+  }
+
+  addHeightInputKeyHandler() {
+    const { accessor, graph } = this;
+    this.addKeyHandler(accessor.heightInput, function () {
+      accessor.set(graph.pageFormat);
+    });
   }
 
   appendTitle() {
