@@ -30,8 +30,8 @@ export class BaseFormatPanel extends Base {
     this.buttons = new Buttons();
   }
 
-  write(target, resource) {
-    mxUtils.write(target, resource);
+  write(target, text) {
+    mxUtils.write(target, text);
   }
 
   createBtn(label, fn) {
@@ -291,8 +291,8 @@ export class BaseFormatPanel extends Base {
     return new RelativeOption(format, editorUi, container);
   }
 
-  styleButtons(elts) {
-    this.buttons.style(elts);
+  styleButtons(elements) {
+    this.buttons.style(elements);
   }
 
   /**

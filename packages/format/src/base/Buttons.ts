@@ -5,18 +5,18 @@ export class Buttons {
   /**
    *
    */
-  style(elts) {
-    for (var i = 0; i < elts.length; i++) {
-      mxUtils.setPrefixedStyle(elts[i].style, "borderRadius", "3px");
-      mxUtils.setOpacity(elts[i], 100);
-      elts[i].style.border = "1px solid #a0a0a0";
-      elts[i].style.padding = "4px";
-      elts[i].style.paddingTop = "3px";
-      elts[i].style.paddingRight = "1px";
-      elts[i].style.margin = "1px";
-      elts[i].style.width = "24px";
-      elts[i].style.height = "20px";
-      elts[i].className += " geColorBtn";
+  style(elements) {
+    for (let element of elements) {
+      mxUtils.setPrefixedStyle(element.style, "borderRadius", "3px");
+      mxUtils.setOpacity(element, 100);
+      element.style.border = "1px solid #a0a0a0";
+      element.style.padding = "4px";
+      element.style.paddingTop = "3px";
+      element.style.paddingRight = "1px";
+      element.style.margin = "1px";
+      element.style.width = "24px";
+      element.style.height = "20px";
+      element.className += " geColorBtn";
     }
   }
 }

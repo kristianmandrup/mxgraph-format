@@ -16,5 +16,14 @@ describe("Buttons", () => {
         });
       });
     });
+    describe("methods", () => {
+      describe("style(elements)", () => {
+        it("styles each element", () => {
+          const elem = document.createElement("div");
+          const elements = [elem];
+          expect(instance.style(elements)).toBe(ui);
+        });
+      });
+    });
   });
 });
