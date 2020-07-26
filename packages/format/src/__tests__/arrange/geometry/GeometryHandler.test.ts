@@ -16,5 +16,35 @@ describe("GeometryHandler", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("createBasicGeometryHandler()", () => {
+        it("creates geo handler", () => {
+          expect(instance.createBasicGeometryHandler()).toBeDefined();
+        });
+      });
+
+      describe("createEdgeGeometryHandler()", () => {
+        it("creates geo edge handler", () => {
+          expect(instance.createEdgeGeometryHandler()).toBeDefined();
+        });
+      });
+
+      describe("addGeometryHandler(input, fn)", () => {
+        it("adds geo handler", () => {
+          const input = document.createElement("input"),
+            fn = () => {};
+          expect(instance.addGeometryHandler(input, fn)).toBeDefined();
+        });
+      });
+
+      describe("addEdgeGeometryHandler(input, fn)", () => {
+        it("adds geo edge handler", () => {
+          const input = document.createElement("input"),
+            fn = () => {};
+          expect(instance.addEdgeGeometryHandler(input, fn)).toBeDefined();
+        });
+      });
+    });
   });
 });

@@ -3,20 +3,6 @@ import { BasicGeometryManager } from "./basic";
 import { GeometryHandler } from "./GeometryHandler";
 
 export class GeometryManager extends GeometryHandler {
-  editorUi: any;
-  format: any;
-  getUnit: any;
-  getUnitStep: any;
-  isFloatUnit: any;
-  inUnit: any;
-  createPanel: any; // fn
-  addUnitInput: any; // fn
-  addLabel: any; // fn
-  createCellOption: any; //fn
-  addKeyHandler: any; // fn
-  fromUnit: any; //
-  listeners: any; //
-
   edgeGeometryManager: any;
   basicGeometryManager: any;
 
@@ -27,19 +13,11 @@ export class GeometryManager extends GeometryHandler {
   }
 
   createEdgeGeometryManager() {
-    return new EdgeGeometryManager(
-      this.editorUi,
-      this.format,
-      this.container,
-    );
+    return new EdgeGeometryManager(this.editorUi, this.format, this.container);
   }
 
   createBasicGeometryManager() {
-    return new BasicGeometryManager(
-      this.editorUi,
-      this.format,
-      this.container,
-    );
+    return new BasicGeometryManager(this.editorUi, this.format, this.container);
   }
 
   addGeometry(container) {
