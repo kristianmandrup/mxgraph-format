@@ -15,6 +15,29 @@ describe("Group", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // cell;
+      // multiSelected;
+      // isSingleSelected;
+    });
+
+    describe("methods", () => {
+      describe("styleDiv()", () => {
+        it("style div", () => {
+          expect(() => instance.styleDiv()).not.toThrow();
+        });
+      });
+
+      // onMultiSelect()
+      // onSingleSelect()
+      // onHasVertices()
+      // onSelected()
+      // onSingleSelectAndVertex()
+      // appendEditDataBtn()
+      // appendEditLinkBtn()
+      // onOneSelected()
+      // add(div)
+      // hideDivIfNone()
     });
   });
 });

@@ -16,5 +16,19 @@ describe("Layer", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("appendToFrontBtn()", () => {
+        it("append to front btn", () => {
+          expect(instance.appendToFrontBtn()).toBeDefined();
+        });
+      });
+
+      describe("appendToBackBtn()", () => {
+        it("append to back btn", () => {
+          expect(instance.appendToBackBtn()).toBeDefined();
+        });
+      });
+    });
   });
 });

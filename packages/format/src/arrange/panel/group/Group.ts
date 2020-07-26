@@ -10,6 +10,7 @@ export class Group extends BaseFormatPanel {
     const { div } = this;
     div.style.paddingTop = "8px";
     div.style.paddingBottom = "6px";
+    return div;
   }
 
   get cell() {
