@@ -16,5 +16,37 @@ describe("Flip", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("appendVerticalBtn()", () => {
+        it("appends vertical btn", () => {
+          expect(() => instance.appendVerticalBtn()).not.toThrow();
+        });
+      });
+
+      describe("appendHorizontalBtn()", () => {
+        it("appends horizontal btn", () => {
+          expect(() => instance.appendHorizontalBtn()).not.toThrow();
+        });
+      });
+
+      describe("appendFlipLabel()", () => {
+        it("appends flip label", () => {
+          expect(() => instance.appendFlipLabel()).not.toThrow();
+        });
+      });
+
+      describe("styleDiv()", () => {
+        it("styles div", () => {
+          expect(() => instance.styleDiv()).not.toThrow();
+        });
+      });
+
+      describe("add(div)", () => {
+        it("adds", () => {
+          expect(() => instance.add(div)).not.toThrow();
+        });
+      });
+    });
   });
 });

@@ -16,9 +16,23 @@ describe("Group", () => {
         });
       });
 
-      // cell;
-      // multiSelected;
-      // isSingleSelected;
+      describe("cell", () => {
+        it("is set", () => {
+          expect(instance.cell).toBeDefined();
+        });
+      });
+
+      describe("multiSelected", () => {
+        it("is false", () => {
+          expect(instance.multiSelected).toBeFalsy();
+        });
+      });
+
+      describe("editorUi", () => {
+        it("is false", () => {
+          expect(instance.isSingleSelected).toBeFalsy();
+        });
+      });
     });
 
     describe("methods", () => {
@@ -28,16 +42,65 @@ describe("Group", () => {
         });
       });
 
-      // onMultiSelect()
-      // onSingleSelect()
-      // onHasVertices()
-      // onSelected()
-      // onSingleSelectAndVertex()
-      // appendEditDataBtn()
-      // appendEditLinkBtn()
-      // onOneSelected()
-      // add(div)
-      // hideDivIfNone()
+      describe("onMultiSelect()", () => {
+        it("no throw", () => {
+          expect(() => instance.onMultiSelect()).not.toThrow();
+        });
+      });
+
+      describe("onSingleSelect()", () => {
+        it("no throw", () => {
+          expect(() => instance.onSingleSelect()).not.toThrow();
+        });
+      });
+
+      describe("onHasVertices()", () => {
+        it("no throw", () => {
+          expect(() => instance.onHasVertices()).not.toThrow();
+        });
+      });
+
+      describe("onSelected()", () => {
+        it("no throw", () => {
+          expect(() => instance.onSelected()).not.toThrow();
+        });
+      });
+
+      describe("onSingleSelectAndVertex()", () => {
+        it("no throw", () => {
+          expect(() => instance.onSingleSelectAndVertex()).not.toThrow();
+        });
+      });
+
+      describe("appendEditDataBtn()", () => {
+        it("appends edit data button", () => {
+          expect(() => instance.appendEditDataBtn()).not.toThrow();
+        });
+      });
+
+      describe("appendEditLinkBtn()", () => {
+        it("appends edit link button", () => {
+          expect(() => instance.appendEditLinkBtn()).not.toThrow();
+        });
+      });
+
+      describe("onOneSelected()", () => {
+        it("no throw", () => {
+          expect(() => instance.onOneSelected()).not.toThrow();
+        });
+      });
+
+      describe("add(div)", () => {
+        it("adds", () => {
+          expect(() => instance.add(div)).not.toThrow();
+        });
+      });
+
+      describe("hideDivIfNone()", () => {
+        it("hides div", () => {
+          expect(() => instance.hideDivIfNone()).not.toThrow();
+        });
+      });
     });
   });
 });

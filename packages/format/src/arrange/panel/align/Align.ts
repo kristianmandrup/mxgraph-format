@@ -33,8 +33,20 @@ export class Align extends BaseFormatPanel {
   }
 
   addButtons() {
-    const { addLeftBtn } = this;
+    const {
+      addLeftBtn,
+      addRightBtn,
+      addCenterBtn,
+      addTopBtn,
+      addMiddleBtn,
+      addBottomBtn,
+    } = this;
     addLeftBtn();
+    addRightBtn();
+    addCenterBtn();
+    addTopBtn();
+    addMiddleBtn();
+    addBottomBtn();
   }
 
   addLeftBtn() {
