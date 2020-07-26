@@ -100,33 +100,4 @@ export class RelativeOption extends Base {
 
     return div;
   }
-
-  protected addUnitInput(
-    container,
-    unit,
-    right,
-    width,
-    update,
-    step?,
-    marginTop?,
-    disableFocus?,
-    isFloat?
-  ) {
-    return this.newUnitInput().add(
-      container,
-      unit,
-      right,
-      width,
-      update,
-      step,
-      marginTop,
-      disableFocus,
-      isFloat
-    );
-  }
-
-  protected newUnitInput() {
-    const { format, editorUi, container } = this;
-    return new UnitInput(format, editorUi, container);
-  }
 }

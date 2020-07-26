@@ -4,14 +4,57 @@ import resources from "@mxgraph-app/resources";
 const { IMAGE_PATH } = resources;
 
 export class Arrow {
+  arrow: any;
+  element: any;
+  height: any;
+  symbol: any;
+
   buttonBackgroundColor: any;
 
   /**
    *
    */
-  add(elt, height?) {
+  add(element, height?) {
+    const { createArrow, createSymbol, styleElement } = this;
+    this.element = element;
     height = height != null ? height : 10;
+    this.height = height;
 
+    createArrow();
+    createSymbol();
+    styleElement();
+
+    const { arrow, symbol } = this;
+    element.appendChild(arrow);
+    return symbol;
+  }
+
+  styleElement() {
+    const { element } = this;
+    mxUtils.setOpacity(element, 100);
+    element.style.border = "1px solid #a0a0a0";
+    element.style.backgroundColor = this.buttonBackgroundColor;
+    element.style.backgroundImage = "none";
+    element.style.width = "auto";
+    element.className += " geColorBtn";
+    mxUtils.setPrefixedStyle(element.style, "borderRadius", "3px");
+    return element;
+  }
+
+  createSymbol() {
+    const { element } = this;
+    var symbol = element.getElementsByTagName("div")[0];
+
+    if (!symbol) return;
+    symbol.style.paddingRight = "6px";
+    symbol.style.marginLeft = "4px";
+    symbol.style.marginTop = "-1px";
+    symbol.style.display = mxClient.IS_QUIRKS ? "inline" : "inline-block";
+    mxUtils.setOpacity(symbol, 60);
+  }
+
+  createArrow() {
+    const { height } = this;
     var arrow = document.createElement("div");
     arrow.style.display = mxClient.IS_QUIRKS ? "inline" : "inline-block";
     arrow.style.padding = "6px";
@@ -36,27 +79,7 @@ export class Arrow {
         : IMAGE_PATH + "/dropdown.png") +
       '" style="margin-bottom:4px;">';
     mxUtils.setOpacity(arrow, 70);
-
-    var symbol = elt.getElementsByTagName("div")[0];
-
-    if (symbol != null) {
-      symbol.style.paddingRight = "6px";
-      symbol.style.marginLeft = "4px";
-      symbol.style.marginTop = "-1px";
-      symbol.style.display = mxClient.IS_QUIRKS ? "inline" : "inline-block";
-      mxUtils.setOpacity(symbol, 60);
-    }
-
-    mxUtils.setOpacity(elt, 100);
-    elt.style.border = "1px solid #a0a0a0";
-    elt.style.backgroundColor = this.buttonBackgroundColor;
-    elt.style.backgroundImage = "none";
-    elt.style.width = "auto";
-    elt.className += " geColorBtn";
-    mxUtils.setPrefixedStyle(elt.style, "borderRadius", "3px");
-
-    elt.appendChild(arrow);
-
-    return symbol;
+    this.arrow = arrow;
+    return arrow;
   }
 }

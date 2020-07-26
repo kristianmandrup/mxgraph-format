@@ -16,5 +16,50 @@ describe("Base", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("addUnitInput(container, unit, right, width, update)", () => {
+        it("adds unit input to container", () => {
+          const container = document.createElement("div");
+          const unit = "mm";
+          const right = 10,
+            width = 10;
+          const update = () => {};
+
+          expect(() =>
+            instance.addUnitInput(container, unit, right, width, update)
+          ).not.toThrow();
+        });
+      });
+
+      describe("newUnitInput()", () => {
+        it("creates instance", () => {
+          expect(instance.newUnitInput()).toBeDefined();
+        });
+      });
+
+      describe("addKeyHandler(input, listener)", () => {
+        it("adds key handler", () => {
+          const input = document.createElement("input");
+          const listener = () => {};
+          expect(instance.addKeyHandler(input, listener)).toBeDefined();
+        });
+      });
+
+      describe("addLabel(div, title, right)", () => {
+        it("adds key handler", () => {
+          const div = document.createElement("input");
+          const title = "hello";
+          const right = 1;
+          expect(instance.addLabel(div, title, right)).toBeDefined();
+        });
+      });
+
+      describe("createPanel()", () => {
+        it("creates instance", () => {
+          expect(instance.createPanel()).toBeDefined();
+        });
+      });
+    });
   });
 });
