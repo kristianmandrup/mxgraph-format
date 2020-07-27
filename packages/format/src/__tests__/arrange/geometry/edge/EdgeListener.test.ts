@@ -16,5 +16,13 @@ describe("EdgeListener", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("handler(sender, evt, force)", () => {
+        it("reacts", () => {
+          expect(() => instance.handler()).not.toThrow();
+        });
+      });
+    });
   });
 });

@@ -1,8 +1,16 @@
 import mx from "@mxgraph-app/mx";
 import { BaseManager } from "../BaseManager";
+import { BasicManagerListener } from "./BasicManagerListener";
 const { mxResources, mxEvent, mxUtils } = mx;
 
 export class BasicManager extends BaseManager {
+  basicManagerListener: any;
+
+  constructor(editorUi: any, format: any, container: any) {
+    super(editorUi, format, container);
+    this.basicManagerListener = this.createBasicManagerListener();
+  }
+
   get rect() {
     return this.format.getSelectionState();
   }
@@ -74,16 +82,16 @@ export class BasicManager extends BaseManager {
     const { div2, leftUpdate } = this;
     return this.addUnitInput(
       div2,
-      this.getUnit(),
+      this.unit,
       84,
       44,
       () => {
         leftUpdate();
       },
-      this.getUnitStep(),
+      this.unitStep,
       null,
       null,
-      this.isFloatUnit()
+      this.isFloatUnit
     );
   }
 
@@ -91,16 +99,16 @@ export class BasicManager extends BaseManager {
     const { div2, topUpdate } = this;
     return this.addUnitInput(
       div2,
-      this.getUnit(),
+      this.unit,
       20,
       44,
       () => {
         topUpdate();
       },
-      this.getUnitStep(),
+      this.unitStep,
       null,
       null,
-      this.isFloatUnit()
+      this.isFloatUnit
     );
   }
 
@@ -114,16 +122,16 @@ export class BasicManager extends BaseManager {
     const { div, widthUpdate } = this;
     return this.addUnitInput(
       div,
-      this.getUnit(),
+      this.unit,
       84,
       44,
       () => {
         widthUpdate();
       },
-      this.getUnitStep(),
+      this.unitStep,
       null,
       null,
-      this.isFloatUnit()
+      this.isFloatUnit
     );
   }
 
@@ -131,16 +139,16 @@ export class BasicManager extends BaseManager {
     const { div, heightUpdate } = this;
     return this.addUnitInput(
       div,
-      this.getUnit(),
+      this.unit,
       20,
       44,
       () => {
         heightUpdate();
       },
-      this.getUnitStep(),
+      this.unitStep,
       null,
       null,
-      this.isFloatUnit()
+      this.isFloatUnit
     );
   }
 
@@ -189,52 +197,14 @@ export class BasicManager extends BaseManager {
     return wrapper;
   }
 
-  listener = (_sender?, _evt?, force?) => {
-    const { rect, graph, div, width, height, div2, left, top } = this;
-
-    if (
-      !rect.containsLabel &&
-      rect.vertices.length == graph.getSelectionCount() &&
-      rect.width != null &&
-      rect.height != null
-    ) {
-      div.style.display = "";
-
-      if (force || document.activeElement != width) {
-        width.value =
-          this.inUnit(rect.width) +
-          (rect.width == "" ? "" : " " + this.getUnit());
-      }
-
-      if (force || document.activeElement != height) {
-        height.value =
-          this.inUnit(rect.height) +
-          (rect.height == "" ? "" : " " + this.getUnit());
-      }
-    } else {
-      div.style.display = "none";
-    }
-
-    if (
-      rect.vertices.length == graph.getSelectionCount() &&
-      rect.x != null &&
-      rect.y != null
-    ) {
-      div2.style.display = "";
-
-      if (force || document.activeElement != left) {
-        left.value =
-          this.inUnit(rect.x) + (rect.x == "" ? "" : " " + this.getUnit());
-      }
-
-      if (force || document.activeElement != top) {
-        top.value =
-          this.inUnit(rect.y) + (rect.y == "" ? "" : " " + this.getUnit());
-      }
-    } else {
-      div2.style.display = "none";
-    }
+  // extract as class
+  listener = (sender?, evt?, force?) => {
+    return this.basicManagerListener.listener(sender, evt, force);
   };
+
+  createBasicManagerListener() {
+    return new BasicManagerListener(this.editorUi, this.format, this.container);
+  }
 
   get widthUpdate(): any {
     const { constrainCheckbox, width, panel } = this;

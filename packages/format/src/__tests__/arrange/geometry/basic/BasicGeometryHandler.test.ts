@@ -16,5 +16,22 @@ describe("BasicGeometryHandler", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("addGeometryHandler(input, fn)", () => {
+        it("adds geometry handler", () => {
+          const input = document.createElement("input");
+          const fn = () => {};
+          expect(() => instance.addGeometryHandler(input, fn)).not.toThrow();
+        });
+      });
+
+      describe("update(evt)", () => {
+        it("updates", () => {
+          const evt = { type: "x" };
+          expect(() => instance.update(evt)).not.toThrow();
+        });
+      });
+    });
   });
 });

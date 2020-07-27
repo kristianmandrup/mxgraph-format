@@ -15,6 +15,38 @@ describe("BaseManager", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      describe("rect", () => {
+        it("is set", () => {
+          expect(instance.rect).toBeDefined();
+        });
+      });
+
+      describe("opt", () => {
+        it("is set", () => {
+          expect(instance.opt).toBeDefined();
+        });
+      });
+
+      describe("constrainCheckbox", () => {
+        it("is set", () => {
+          expect(instance.constrainCheckbox).toBeDefined();
+        });
+      });
+
+      describe("heightUpdate", () => {
+        it("is set", () => {
+          expect(instance.heightUpdate).toBeDefined();
+        });
+      });
+    });
+
+    describe("methods", () => {
+      describe("widthUpdate(evt?)", () => {
+        it("updates width", () => {
+          expect(() => instance.widthUpdate()).not.toThrow();
+        });
+      });
     });
   });
 });

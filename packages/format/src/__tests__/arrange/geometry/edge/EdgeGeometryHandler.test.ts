@@ -16,5 +16,17 @@ describe("EdgeGeometryHandler", () => {
         });
       });
     });
+
+    describe("methods", () => {
+      describe("addEdgeGeometryHandler(input, fn)", () => {
+        it("adds handler", () => {
+          const input = document.createElement("input");
+          const fn = () => {};
+          expect(() =>
+            instance.addEdgeGeometryHandler(input, fn)
+          ).not.toThrow();
+        });
+      });
+    });
   });
 });

@@ -1,11 +1,10 @@
-import { EdgeGeometryManager } from "../../../..";
+import { BasicManagerListener } from "../../../..";
 import { editorUi as ui, format, container } from "../../../mocks";
 
-describe("EdgeGeometryManager", () => {
-  let instance, div;
+describe(" BasicManagerListener", () => {
+  let instance;
   beforeEach(() => {
-    instance = new EdgeGeometryManager(ui, format, container);
-    div = document.createElement("div");
+    instance = new BasicManagerListener(ui, format, container);
   });
 
   describe("instance", () => {
@@ -18,9 +17,10 @@ describe("EdgeGeometryManager", () => {
     });
 
     describe("methods", () => {
-      describe("addEdgeGeometry(container)", () => {
+      // REFACTOR
+      describe("listener(sender?, evt?, force?)", () => {
         it("reacts", () => {
-          expect(() => instance.addEdgeGeometry(container)).not.toThrow();
+          expect(() => instance.listener()).not.toThrow();
         });
       });
     });
