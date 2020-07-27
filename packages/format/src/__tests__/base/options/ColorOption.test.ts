@@ -34,6 +34,13 @@ describe("ColorOption", () => {
             )
           ).toBeDefined();
         });
+
+        // createDiv()
+        // createCheckbox()
+        // appendCheckbox()
+        // appendSpan()
+        // appendBtn()
+        // apply(color, disableUpdate?, forceUpdate?)
       });
     });
   });
