@@ -39,6 +39,12 @@ describe("BaseManager", () => {
           expect(instance.heightUpdate).toBeDefined();
         });
       });
+
+      describe("flexArrowWidth", () => {
+        it("is set", () => {
+          expect(instance.flexArrowWidth).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {

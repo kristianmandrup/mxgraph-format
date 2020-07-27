@@ -50,20 +50,22 @@ export class BaseManager extends GeometryHandler {
     });
   }
 
+  get flexArrowWidth() {
+    const { rect } = this;
+    return mxUtils.getValue(
+      rect.style,
+      "width",
+      mxCellRenderer.defaultShapes["flexArrow"].prototype.defaultWidth
+    );
+  }
+
   widthUpdate = (evt?) => {
-    const { width, graph, ui, rect } = this;
+    const { width, graph, ui, flexArrowWidth } = this;
     // Maximum stroke width is 999
     var value = parseInt(width.value);
     value = Math.min(999, Math.max(1, isNaN(value) ? 1 : value));
 
-    if (
-      value !=
-      mxUtils.getValue(
-        rect.style,
-        "width",
-        mxCellRenderer.defaultShapes["flexArrow"].prototype.defaultWidth
-      )
-    ) {
+    if (value != flexArrowWidth) {
       graph.setCellStyles("width", value, graph.getSelectionCells());
       ui.fireEvent(
         new mxEventObject(
