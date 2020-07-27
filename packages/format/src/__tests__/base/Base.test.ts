@@ -15,6 +15,12 @@ describe("Base", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      describe("graphContainer", () => {
+        it("is set", () => {
+          expect(instance.graphContainer).toBeDefined();
+        });
+      });
     });
 
     describe("methods", () => {
@@ -43,6 +49,25 @@ describe("Base", () => {
           const input = document.createElement("input");
           const listener = () => {};
           expect(instance.addKeyHandler(input, listener)).toBeDefined();
+        });
+      });
+
+      describe("onPressEnter(e)", () => {
+        it("on enter - focus on graph", () => {
+          const e = {
+            keyyCode: 13,
+          };
+          expect(instance.onPressEnter(e)).toBeDefined();
+        });
+      });
+
+      describe("onPressEscape(e, listener)", () => {
+        it("on enter - focus on graph", () => {
+          const e = {
+            keyyCode: 27,
+          };
+          const listener = () => {};
+          expect(instance.onPressEscape(e, listener)).toBeDefined();
         });
       });
 

@@ -52,19 +52,28 @@ export class Base extends Unit {
    *
    */
   addKeyHandler(input, listener) {
+    const { onPressEnter, onPressEscape } = this;
     mxEvent.addListener(input, "keydown", (e) => {
-      if (e.keyCode == 13) {
-        this.editorUi.editor.graph.container.focus();
-        mxEvent.consume(e);
-      } else if (e.keyCode == 27) {
-        if (listener != null) {
-          listener(null, null, true);
-        }
-
-        this.editorUi.editor.graph.container.focus();
-        mxEvent.consume(e);
-      }
+      onPressEnter(e) || onPressEscape(e, listener);
     });
+  }
+
+  get graphContainer() {
+    return this.editorUi.editor.graph.container;
+  }
+
+  onPressEnter(e) {
+    if (e.keyCode !== 13) return;
+    this.graphContainer.focus();
+    mxEvent.consume(e);
+    return true;
+  }
+
+  onPressEscape(e, listener) {
+    if (e.keyCode !== 27) return;
+    listener && listener(null, null, true);
+    this.graphContainer.focus();
+    mxEvent.consume(e);
   }
 
   /**
