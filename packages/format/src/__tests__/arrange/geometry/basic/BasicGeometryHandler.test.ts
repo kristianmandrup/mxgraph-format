@@ -45,12 +45,41 @@ describe("BasicGeometryHandler", () => {
         });
       });
 
-      // updateInputValue()
-      // onValidInput()
-      // onChangedValue()
-      // setValue()
-      // resetInputValue()
-      // onInvalidValue()
+      describe("updateInputValue()", () => {
+        it("updates input", () => {
+          expect(() => instance.updateInputValue()).not.toThrow();
+        });
+      });
+
+      describe("onValidInput()", () => {
+        it("updates input", () => {
+          expect(() => instance.onValidInput()).not.toThrow();
+        });
+      });
+
+      describe("onChangedValue()", () => {
+        it("updates input on changed value", () => {
+          expect(() => instance.onChangedValue()).not.toThrow();
+        });
+      });
+
+      describe("setValue()", () => {
+        it("set value", () => {
+          expect(() => instance.setValue()).not.toThrow();
+        });
+      });
+
+      describe("resetInputValue()", () => {
+        it("reset input value", () => {
+          expect(() => instance.resetInputValue()).not.toThrow();
+        });
+      });
+
+      describe("onInvalidValue()", () => {
+        it("on invalid input value", () => {
+          expect(() => instance.onInvalidValue()).not.toThrow();
+        });
+      });
     });
   });
 });
