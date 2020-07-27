@@ -7,6 +7,12 @@ export class BasicGeometryManager extends BasicManager {
    *
    */
   addGeometry(container) {
+    const { appendDiv, appendDiv2 } = this;
+    appendDiv(container);
+    appendDiv2(container);
+  }
+
+  appendDiv(container) {
     const { div, span } = this;
     div.appendChild(span);
     const { width, height, autosizeBtn, wrapper, listener } = this;
@@ -22,8 +28,10 @@ export class BasicGeometryManager extends BasicManager {
     this.addKeyHandler(height, listener);
 
     container.appendChild(div);
+  }
 
-    const { span2, div2 } = this;
+  appendDiv2(container) {
+    const { span2, div2, listener } = this;
     div2.appendChild(span2);
 
     const { left, top } = this;

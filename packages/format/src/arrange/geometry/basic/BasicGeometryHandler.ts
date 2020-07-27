@@ -6,6 +6,7 @@ export class BasicGeometryHandler extends BasicManager {
   initialValue: any;
   input: any;
   fn: any;
+  value: any;
   /**
    *
    */
@@ -23,46 +24,93 @@ export class BasicGeometryHandler extends BasicManager {
   }
 
   update = (evt) => {
-    const panel: any = this;
-    const { graph, input, fn, initialValue } = this;
-    if (input.value != "") {
-      var value = parseFloat(input.value);
-
-      if (isNaN(value)) {
-        input.value = initialValue + " " + panel.getUnit();
-      } else if (value != initialValue) {
-        graph.getModel().beginUpdate();
-        try {
-          var cells = graph.getSelectionCells();
-
-          for (var i = 0; i < cells.length; i++) {
-            if (graph.getModel().isVertex(cells[i])) {
-              var geo = graph.getCellGeometry(cells[i]);
-
-              if (geo != null) {
-                geo = geo.clone();
-                fn(geo, value);
-
-                var state = graph.view.getState(cells[i]);
-
-                if (state != null && graph.isRecursiveVertexResize(state)) {
-                  graph.resizeChildCells(cells[i], geo);
-                }
-
-                graph.getModel().setGeometry(cells[i], geo);
-                graph.constrainChildCells(cells[i]);
-              }
-            }
-          }
-        } finally {
-          graph.getModel().endUpdate();
-        }
-
-        this.initialValue = value;
-        input.value = value + " " + panel.getUnit();
-      }
-    }
-
+    const { onValidInput } = this;
+    onValidInput();
     mxEvent.consume(evt);
   };
+
+  get isValidInput() {
+    return this.input.value !== "";
+  }
+
+  onInvalidValue() {
+    const { isValidValue, resetInputValue } = this;
+    if (isValidValue) return;
+    resetInputValue();
+    return true;
+  }
+
+  get defaultInputValue() {
+    return this.initialValue + " " + this.panel.getUnit();
+  }
+
+  resetInputValue() {
+    this.input.value = this.defaultInputValue;
+  }
+
+  get isValidValue() {
+    return !isNaN(this.value);
+  }
+
+  setValue() {
+    this.value = parseFloat(this.input.value);
+  }
+
+  get isChangedValue() {
+    return this.value != this.initialValue;
+  }
+
+  onChangedValue() {
+    const { isChangedValue, updateInputValue } = this;
+    if (!isChangedValue) return;
+    updateInputValue();
+  }
+
+  onValidInput() {
+    const { setValue, isValidInput, onInvalidValue, onChangedValue } = this;
+    if (!isValidInput) return;
+
+    setValue();
+    onInvalidValue() || onChangedValue();
+  }
+
+  updateInputValue() {
+    const { graph, processCells, value, input, panel } = this;
+    graph.getModel().beginUpdate();
+    try {
+      processCells();
+    } finally {
+      graph.getModel().endUpdate();
+    }
+
+    this.initialValue = value;
+    input.value = value + " " + panel.getUnit();
+  }
+
+  get cells() {
+    return this.graph.getSelectionCells();
+  }
+
+  processCells() {
+    const { graph, fn, value, cells } = this;
+    for (let cell of cells) {
+      if (graph.getModel().isVertex(cell)) {
+        var geo = graph.getCellGeometry(cell);
+
+        if (geo != null) {
+          geo = geo.clone();
+          fn(geo, value);
+
+          var state = graph.view.getState(cell);
+
+          if (state != null && graph.isRecursiveVertexResize(state)) {
+            graph.resizeChildCells(cell, geo);
+          }
+
+          graph.getModel().setGeometry(cell, geo);
+          graph.constrainChildCells(cell);
+        }
+      }
+    }
+  }
 }

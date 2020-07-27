@@ -15,6 +15,12 @@ describe("BasicGeometryHandler", () => {
           expect(instance.editorUi).toBe(ui);
         });
       });
+
+      // cells
+      // isChangedValue
+      // isValidValue
+      // defaultInputValue
+      // isValidInput
     });
 
     describe("methods", () => {
@@ -32,6 +38,19 @@ describe("BasicGeometryHandler", () => {
           expect(() => instance.update(evt)).not.toThrow();
         });
       });
+
+      describe("processCells()", () => {
+        it("process cells", () => {
+          expect(() => instance.processCells()).not.toThrow();
+        });
+      });
+
+      // updateInputValue()
+      // onValidInput()
+      // onChangedValue()
+      // setValue()
+      // resetInputValue()
+      // onInvalidValue()
     });
   });
 });

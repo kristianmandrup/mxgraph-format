@@ -22,6 +22,18 @@ describe("BasicGeometryManager", () => {
           expect(() => instance.addGeometry(container)).not.toThrow();
         });
       });
+
+      describe("appendDiv(container)", () => {
+        it("append div to container", () => {
+          expect(() => instance.appendDiv(container)).not.toThrow();
+        });
+      });
+
+      describe("appendDiv2(container)", () => {
+        it("append div2 to container", () => {
+          expect(() => instance.appendDiv2(container)).not.toThrow();
+        });
+      });
     });
   });
 });
