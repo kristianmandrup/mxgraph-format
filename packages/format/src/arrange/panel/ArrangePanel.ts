@@ -1,7 +1,7 @@
 import { BaseFormatPanel } from "../../base/BaseFormatPanel";
 import { GeometryManager } from "../geometry/GeometryManager";
 import { Table } from "../Table";
-import { PanelInit } from "./init/Init";
+import { PanelInit } from "./init/PanelInit";
 import { Flip } from "./flip/Flip";
 import { Align } from "./align/Align";
 import { Group } from "./group/Group";
