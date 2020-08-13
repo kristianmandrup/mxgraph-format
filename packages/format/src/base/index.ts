@@ -7,3 +7,4 @@ export * from "./InputHandlerInstaller";
 export * from "./SelectionState";
 export * from "./Stepper";
 export * from "./UnitInput";
+export { TYPES as baseTypes } from "./types";
